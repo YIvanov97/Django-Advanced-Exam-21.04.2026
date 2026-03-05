@@ -1,0 +1,13 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <div class="profile__image-container">
+        <img src="{{ object.user.profile.profile_picture }}" alt="test"/>
+    </div>
+    <p>{{ object.user.email }}</p>
+    <p>{{ object.user.username }}</p>
+    <p>{{ object.user.profile.first_name }}</p>
+    <p>{{ object.user.profile.last_name }}</p>
+    {% if profile.pk == request.user.pk %}
+        <a href="{% url 'edit-profile' request.user.pk %}">Edit</a>
+    {% endif %}
+{% endblock %}

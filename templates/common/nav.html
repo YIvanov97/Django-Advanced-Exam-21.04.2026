@@ -1,0 +1,35 @@
+<ul class="navigation">
+  <li class="navigation__item-container">
+    <a class="navigation__item" href="{% url 'home-page' %}">Home</a>
+  </li>
+  <li class="navigation__item-container">
+    <a class="navigation__item" href="{% url 'catalog' %}">Catalog</a>
+  </li>
+  <li class="navigation__item-container">
+    <a class="navigation__item" href="#">Cart</a>
+  </li>
+    {% if request.user.is_authenticated %}
+      <li class="navigation__item-container">
+        <a class="navigation__item" href="{% url 'profile-details' request.user.pk %}">Profile</a>
+      </li>
+      <li class="navigation__item-container">
+        <a class="navigation__item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+      </li>
+        {% if request.user.is_staff %}
+            <li class="navigation__item-container">
+              <a class="navigation__item" href="{% url 'add-product' %}">Add product</a>
+            </li>
+        {% endif %}
+    {% else %}
+      <li class="navigation__item-container">
+        <a class="navigation__item" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="navigation__item-container">
+        <a class="navigation__item" href="{% url 'register' %}">Register</a>
+      </li>
+    {% endif %}
+</ul>
+
+<form style="display: none;" id="logout-form" method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+</form>

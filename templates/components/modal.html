@@ -1,0 +1,9 @@
+<div>
+    <form method="post" id="confirm-form" action="">
+      {% csrf_token %}
+      <div class="modal__actions">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="submit" class="btn btn--danger" id="confirm-submit">Confirm</button>
+      </div>
+    </form>
+</div>

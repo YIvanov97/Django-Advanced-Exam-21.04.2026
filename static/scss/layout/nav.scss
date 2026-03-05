@@ -1,0 +1,21 @@
+@import '../colors';
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+
+  &__item-container {
+    flex: 1;
+    list-style: none;
+  }
+
+  &__item {
+    color: $mainBlue;
+    text-decoration: none;
+    padding: 10px 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

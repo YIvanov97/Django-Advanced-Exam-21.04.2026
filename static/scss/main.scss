@@ -1,0 +1,17 @@
+// Common
+@use "layout/nav";
+@use "common/input";
+@use "common/home-page";
+
+// Accounts
+@use "accounts/profile";
+
+body {
+  margin: 0 20px;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

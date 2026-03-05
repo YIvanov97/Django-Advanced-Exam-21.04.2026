@@ -1,0 +1,12 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <h1>Login</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include "components/input.html" with field=form.username %}
+        {% include "components/input.html" with field=form.password %}
+        <button>Login</button>
+        <a href="{% url 'register' %}">Don't have account? Create one here.</a>
+    </form>
+{% endblock %}

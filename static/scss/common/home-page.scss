@@ -1,0 +1,15 @@
+.heading {
+  width: 100%;
+  min-height: 720px;
+  background-image: url("/static/iamges/heading-background.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 20px;
+  padding: 40px;
+
+  &__title {
+    font-size: 38px;
+  }
+}
