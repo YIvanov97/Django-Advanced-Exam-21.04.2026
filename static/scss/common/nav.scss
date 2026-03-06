@@ -1,4 +1,4 @@
-@import '../colors';
+@use '../colors';
 
 .navigation {
   display: flex;
@@ -10,7 +10,7 @@
   }
 
   &__item {
-    color: $mainBlue;
+    color: colors.$mainBlue;
     text-decoration: none;
     padding: 10px 10px;
 

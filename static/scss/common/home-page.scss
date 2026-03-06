@@ -1,3 +1,5 @@
+@use '../colors';
+
 .heading {
   width: 100%;
   min-height: 720px;
@@ -6,10 +8,67 @@
   background-position: center;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
   border-radius: 20px;
   padding: 40px;
 
   &__title {
-    font-size: 38px;
+    font-size: 62px;
+    color: colors.$white;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__data-label {
+    font-size: 16px;
+    color: colors.$white;
+    font-weight: 200;
+    text-align: left;
+    margin: 0;
+  }
+
+  &__buttons-container {
+    display: flex;
+    gap: 20px;
+
+    .catalog-button {
+      background-color: colors.$lightBlue;
+      color: colors.$black;
+    }
+
+    .about-us-button {
+      background-color: transparent;
+      border: 1px solid colors.$lightBlue;
+      color: colors.$lightBlue;
+    }
+  }
+
+  &__button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 200;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.shop-by-category {
+  width: 100%;
+  &__category-list {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    gap: 40px;
   }
 }

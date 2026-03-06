@@ -8,6 +8,7 @@ class ProductBaseForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'description': forms.Textarea(attrs={'cols': 6, 'rows': 5}),
+            'category': forms.Select()
         }
 
 class ProductCreateForm(ProductBaseForm):
@@ -25,7 +26,6 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'content': forms.TextInput(
                 attrs={
-                    'class': 'form-control',
                     'placeholder': 'Enter your review',
                 }
             )

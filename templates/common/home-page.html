@@ -1,4 +1,6 @@
 {% extends 'common/base.html' %}
+{% load category_card %}
+{% load button %}
 {% block content %}
     <main>
         <section class="heading">
@@ -8,8 +10,8 @@
                     At Shop, we're redefining your tech experience by offering the latest and most innovative products.
                 </p>
                 <div class="heading__buttons-container">
-                    <a>Browse Products</a>
-                    <a>About Us</a>
+                    {% button href="#" label="Browse Products" is_outline=False color="#000000" background_color="#BDDDFC" %}
+                    {% button href="#" label="About Us" is_outline=True color="#BDDDFC" %}
                 </div>
             </div>
         </section>
@@ -18,6 +20,11 @@
         </section>
         <section class="shop-by-category">
             <h2>Shop by Category</h2>
+            <div class="shop-by-category__category-list">
+                {% for category in categories %}
+                    {% category_card href="#" label=category.label is_disabled=category.has_products %}
+                {% endfor %}
+            </div>
         </section>
     </main>
 {% endblock %}

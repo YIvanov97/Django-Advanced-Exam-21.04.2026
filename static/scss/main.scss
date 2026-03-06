@@ -1,15 +1,19 @@
 // Common
-@use "layout/nav";
-@use "common/input";
+@use "common/nav";
 @use "common/home-page";
 
 // Accounts
 @use "accounts/profile";
 
+//Components
+@use "components/input";
+@use "components/button";
+@use "components/category_card";
+
 body {
   margin: 0 20px;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 *, *::before, *::after {
