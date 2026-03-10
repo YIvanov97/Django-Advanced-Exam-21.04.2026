@@ -1,0 +1,27 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <div class="product-details">
+        <div class="product-details__image-container">
+            <img class="product-details__image" alt="product-image" src="{{ product.image.url }}"/>
+        </div>
+        <div class="product-details__data">
+            <span class="product-details__data-category">{{ product.category|capfirst }}</span>
+            <h1 class="product-details__data-name">{{ product.name }}</h1>
+            <span class="product-details__data-price">{{ product.price }}$</span>
+            <div class="product-details__delivery-data">
+                <div class="product-details__delivery-data-element">
+                    <i class="bi bi-truck"></i>
+                    <span class="delivery-element-label">Free Delivery</span>
+                </div>
+                <div class="product-details__delivery-data-element">
+                    <i class="bi bi-shield-check"></i>
+                    <span class="delivery-element-label">2 years warranty</span>
+                </div>
+                <div class="product-details__delivery-data-element">
+                    <i class="bi bi-truck"></i>
+                    <span class="delivery-element-label">Free Delivery</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

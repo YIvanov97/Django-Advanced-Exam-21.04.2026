@@ -1,9 +1,8 @@
 @use '../colors';
 
 .heading {
-  width: 100%;
   min-height: 720px;
-  background-image: url("/static/iamges/heading-background.png");
+  background-image: url("/static/images/heading-background.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -11,6 +10,7 @@
   justify-content: space-between;
   border-radius: 20px;
   padding: 40px;
+  margin: 0 20px;
 
   &__title {
     font-size: 62px;
@@ -39,7 +39,7 @@
 
     .catalog-button {
       background-color: colors.$lightBlue;
-      color: colors.$black;
+      color: colors.$labelBlack;
     }
 
     .about-us-button {
@@ -48,27 +48,76 @@
       color: colors.$lightBlue;
     }
   }
+}
 
-  &__button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 200;
-    transition: transform 0.3s ease;
+.featured-products {
+  padding: 20px 40px;
 
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-    }
+  &__title {
+    font-size: 52px;
+    color: #393939;
+    font-weight: 400;
+    margin: 0 20px 20px 20px;
+  }
+
+  &__products-list {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: space-between;
+    padding: 20px;
   }
 }
 
 .shop-by-category {
+  background-color: colors.$lightBlue;
   width: 100%;
+  padding: 20px 40px;
+
+  &__header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 20px 20px;
+  }
+
+  &__title {
+    font-size: 52px;
+    color: #393939;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__buttons-container {
+    gap: 10px;
+  }
+
+  &__nav-button {
+    background-color: transparent;
+    border-width: 0;
+    font-size: 36px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .nav-button-left {
+    color: colors.$mainBlue;
+  }
+
+  .nav-button-right {
+    color: colors.$darkBlue;
+  }
+
   &__category-list {
     display: flex;
     flex-direction: row;
     overflow: scroll;
     gap: 40px;
+    padding: 20px 0;
+    margin: 0 20px;
+    scrollbar-width: none;
   }
 }

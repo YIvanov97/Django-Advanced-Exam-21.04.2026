@@ -1,0 +1,47 @@
+@use '../colors';
+
+.category-card {
+  position: relative;
+  height: 500px;
+  min-width: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: flex-end;
+  filter: grayscale(100%);
+  opacity: 0.9;
+  padding: 0;
+
+  &__fade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, colors.$black, transparent 70%);
+  }
+
+  &__label {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-size: 62px;
+    color: colors.$white;
+    font-weight: 600;
+    margin: 0;
+    z-index: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
+
+.active{
+  filter: grayscale(0);
+  opacity: 1;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}

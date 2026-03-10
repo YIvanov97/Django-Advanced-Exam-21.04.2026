@@ -1,6 +1,8 @@
 {% extends 'common/base.html' %}
-{% load category_card %}
 {% load button %}
+{% load product_card %}
+{% load category_card %}
+
 {% block content %}
     <main>
         <section class="heading">
@@ -10,19 +12,38 @@
                     At Shop, we're redefining your tech experience by offering the latest and most innovative products.
                 </p>
                 <div class="heading__buttons-container">
-                    {% button href="#" label="Browse Products" is_outline=False color="#000000" background_color="#BDDDFC" %}
+                    {% url 'catalog' as catalog_url %}
+                    {% button href=catalog_url label="Browse Products" is_outline=False color="#000000" background_color="#BDDDFC" %}
                     {% button href="#" label="About Us" is_outline=True color="#BDDDFC" %}
                 </div>
             </div>
         </section>
         <section class="featured-products">
-            <h2>Featured Products</h2>
+            <h2 class="featured-products__title">Featured Products</h2>
+            <div class="featured-products__products-list">
+                {% for product in featured_products %}
+                    {% url 'product-details' pk=product.pk as product_url %}
+                    {% product_card href=product_url product_name=product.name image=product.image price=product.price %}
+                {% empty %}
+                    <span>No products</span>
+                {% endfor %}
+            </div>
         </section>
         <section class="shop-by-category">
-            <h2>Shop by Category</h2>
-            <div class="shop-by-category__category-list">
+            <div class="shop-by-category__header-container">
+                <h2 class="shop-by-category__title">Shop by Category</h2>
+                <div class="shop-by-category__buttons-container">
+                    <button id="category-scroll-left" class="shop-by-category__nav-button nav-button-left">
+                        <i class="bi bi-arrow-left-circle-fill"></i>
+                    </button>
+                    <button id="category-scroll-right" class="shop-by-category__nav-button nav-button-right">
+                        <i class="bi bi-arrow-right-circle-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="category-list" class="shop-by-category__category-list">
                 {% for category in categories %}
-                    {% category_card href="#" label=category.label is_disabled=category.has_products %}
+                    {% category_card label=category.label category=category.value bg_image=category.bg_image is_disabled=category.has_products %}
                 {% endfor %}
             </div>
         </section>

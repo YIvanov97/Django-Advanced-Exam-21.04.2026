@@ -3,7 +3,6 @@
        href="{{ href }}"
        class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %}"
        style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
-       disabled="{{ is_disabled }}"
     >
         {{ label }}
     </a>
@@ -12,7 +11,7 @@
        type="{{ button_type }}"
        class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %}"
        style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
-       disabled="{{ is_disabled }}"
+       {% if is_disabled %} disabled {% endif %}
     >
         {{ label }}
     </button>

@@ -1,3 +1,14 @@
-<a href="{{ href }}" class="container {% if not is_disabled %} container__disabled {% endif %}" disabled="{{ is_disabled }}">
-    <h1>{{ label }}</h1>
-</a>
+{% load static %}
+
+{% if is_disabled %}
+    <div class="category-card" style="background-image: url({% static bg_image %})">
+        <div class="category-card__fade"></div>
+        <h1 class="category-card__label">{{ label }}</h1>
+    </div>
+{% else %}
+    <a href="{% url 'catalog' %}?category={{ category }}" class="category-card active" style="background-image: url({% static bg_image %})">
+        <div class="category-card__fade"></div>
+        <h1 class="category-card__label">{{ label }}</h1>
+    </a>
+{% endif %}
+

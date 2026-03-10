@@ -1,21 +1,31 @@
 {% extends 'common/base.html' %}
+{% load button %}
+{% load product_card %}
+
 {% block content %}
-    <div>
-        {% for product in product_list %}
-            <a href="#">
-                <div>
-                    <img alt="product-image" src="{{ product.image.url }}"/>
-                </div>
-                <h1>{{ product.title }}</h1>
-                <p>{{ product.description }}</p>
-                <span>{{ product.price }}</span>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ review_form }}
-                </form>
-            </a>
-        {% empty %}
-            <h1>No products</h1>
-        {% endfor %}
+    <div class="catalog">
+        <div class="catalog__filters">
+            <form class="catalog__filters-category-filter">
+                {% include "components/select.html" with field=category_filter_form.category %}
+                {% button button_type="submit" label="Filter" is_outline=False color="#393939" background_color="#BDDDFC" %}
+            </form>
+            <form class="catalog__filters-search-filter">
+                {% include "components/input.html" with field=search_form.name %}
+                {% button button_type="submit" label="Search" is_outline=False color="#393939" background_color="#BDDDFC" %}
+            </form>
+        </div>
+        <div class="catalog__list">
+            {% for product in product_list %}
+                {% url 'product-details' pk=product.pk as product_url %}
+                {% product_card href=product_url product_name=product.name image=product.image price=product.price %}
+            {% empty %}
+                <h1>No products</h1>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
+
+{#<form method="post">#}
+{#                    {% csrf_token %}#}
+{#                    {{ review_form }}#}
+{#                </form>#}

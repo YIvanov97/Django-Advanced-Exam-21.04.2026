@@ -5,11 +5,11 @@ from products.category_choices import CategoryChoices
 
 class Product(models.Model):
     image = models.ImageField(
-        upload_to="media/",
+        upload_to="products/",
         blank=True,
         null=True,
     )
-    title = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField(max_length=3000)
     price = models.TextField(max_length=4)
     created_at = models.DateTimeField(auto_now_add=True)

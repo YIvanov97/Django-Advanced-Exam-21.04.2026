@@ -1,0 +1,38 @@
+@use '../colors';
+
+.select {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__label {
+    font-size: 16px;
+    color: colors.$labelBlack;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  &__field, ::picker(select) {
+    appearance: base-select;
+    border-radius: 4px;
+    border-color: colors.$mainBlue;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  ::picker-icon {
+    color: colors.$mainBlue;
+    transition: 0.4s rotate;
+  }
+
+  :open::picker-icon {
+    rotate: 180deg;
+  }
+
+  option:hover,
+  option:focus {
+    background: colors.$lightestBlue;
+  }
+}

@@ -1,0 +1,38 @@
+@use '../colors';
+
+.product-card {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  &__image {
+    width: 100%;
+    height: calc(100% - 44px);
+    border-radius: 20px;
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    &-product-name {
+      font-size: 16px;
+      color: colors.$labelBlack;
+      font-weight: 400;
+    }
+
+    &-product-price {
+      font-size: 16px;
+      color: colors.$mainRed;
+      font-weight: 400;
+    }
+  }
+}

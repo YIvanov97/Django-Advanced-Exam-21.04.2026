@@ -1,3 +1,5 @@
+@use "./colors";
+
 // Common
 @use "common/nav";
 @use "common/home-page";
@@ -5,15 +7,22 @@
 // Accounts
 @use "accounts/profile";
 
+// Products
+@use "products/catalog";
+@use "products/product-details";
+
 //Components
 @use "components/input";
 @use "components/button";
-@use "components/category_card";
+@use "components/select";
+@use "components/category-card";
+@use "components/product-card";
 
 body {
-  margin: 0 20px;
+  margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
+  background-color: colors.$lightestBlue;
 }
 
 *, *::before, *::after {

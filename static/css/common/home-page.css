@@ -1,7 +1,6 @@
 .heading {
-  width: 100%;
   min-height: 720px;
-  background-image: url("/static/iamges/heading-background.png");
+  background-image: url("/static/images/heading-background.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -9,6 +8,7 @@
   justify-content: space-between;
   border-radius: 20px;
   padding: 40px;
+  margin: 0 20px;
 }
 .heading__title {
   font-size: 62px;
@@ -34,33 +34,74 @@
 }
 .heading__buttons-container .catalog-button {
   background-color: #BDDDFC;
-  color: #000000;
+  color: #393939;
 }
 .heading__buttons-container .about-us-button {
   background-color: transparent;
   border: 1px solid #BDDDFC;
   color: #BDDDFC;
 }
-.heading__button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  font-weight: 200;
-  transition: transform 0.3s ease;
+
+.featured-products {
+  padding: 20px 40px;
 }
-.heading__button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
+.featured-products__title {
+  font-size: 52px;
+  color: #393939;
+  font-weight: 400;
+  margin: 0 20px 20px 20px;
+}
+.featured-products__products-list {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .shop-by-category {
+  background-color: #BDDDFC;
   width: 100%;
+  padding: 20px 40px;
+}
+.shop-by-category__header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px 20px 20px;
+}
+.shop-by-category__title {
+  font-size: 52px;
+  color: #393939;
+  font-weight: 400;
+  margin: 0;
+}
+.shop-by-category__buttons-container {
+  gap: 10px;
+}
+.shop-by-category__nav-button {
+  background-color: transparent;
+  border-width: 0;
+  font-size: 36px;
+}
+.shop-by-category__nav-button:hover {
+  cursor: pointer;
+}
+.shop-by-category .nav-button-left {
+  color: #88BDF2;
+}
+.shop-by-category .nav-button-right {
+  color: #384959;
 }
 .shop-by-category__category-list {
   display: flex;
   flex-direction: row;
   overflow: scroll;
   gap: 40px;
+  padding: 20px 0;
+  margin: 0 20px;
+  scrollbar-width: none;
 }
 
 /*# sourceMappingURL=home-page.css.map */
