@@ -1,10 +1,21 @@
 {% extends 'common/base.html' %}
+{% load static %}
+{% load button %}
+{% load form_components %}
 {% block content %}
-    <div>
+    <div class="add-product-form">
+        <h1 class="add-product-form__title">Add product</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
-            <button>Submit</button>
+            {% custom_file_input name="images" label="Product images" multiple=True errors=image_field_errors %}
+            {% include 'products/forms/product-base-form.html' with form=product_form %}
+            {% for _, details_form in product_details_forms.items %}
+                {% include 'products/forms/details-form.html' with form=details_form %}
+            {% endfor %}
+            {% button button_type="submit" label="Add product" color="#393939" background_color="#BDDDFC" %}
         </form>
     </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/add-product-page.js' %}"></script>
 {% endblock %}

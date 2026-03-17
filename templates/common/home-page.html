@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load static %}
 {% load button %}
 {% load product_card %}
 {% load category_card %}
@@ -14,7 +15,7 @@
                 <div class="heading__buttons-container">
                     {% url 'catalog' as catalog_url %}
                     {% button href=catalog_url label="Browse Products" is_outline=False color="#000000" background_color="#BDDDFC" %}
-                    {% button href="#" label="About Us" is_outline=True color="#BDDDFC" %}
+                    {% button label="About Us" is_outline=True color="#BDDDFC" %}
                 </div>
             </div>
         </section>
@@ -22,8 +23,8 @@
             <h2 class="featured-products__title">Featured Products</h2>
             <div class="featured-products__products-list">
                 {% for product in featured_products %}
-                    {% url 'product-details' pk=product.pk as product_url %}
-                    {% product_card href=product_url product_name=product.name image=product.image price=product.price %}
+                    {% url 'product-details' product_slug=product.slug as product_url %}
+                    {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
                 {% empty %}
                     <span>No products</span>
                 {% endfor %}
@@ -48,4 +49,7 @@
             </div>
         </section>
     </main>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/home-page.js' %}"></script>
 {% endblock %}

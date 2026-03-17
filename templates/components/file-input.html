@@ -1,0 +1,18 @@
+<div class="file-input mb-3">
+    <label for="{{ id }}" class="file-input__label form-label">
+        {{ label }}
+    </label>
+    <input
+        id="{{ id }}"
+        class="form-control{% if errors %} file-input__invalid{% endif %}"
+        name="{{ name }}"
+        type="file"
+        accept="image/*"
+        {% if multiple %}multiple{% endif %}
+    >
+    {% if errors %}
+        <div class="invalid-feedback d-block">
+            {{ errors.0 }}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,21 @@
+<div class="review-card">
+    <div class="review-card__header">
+        {% if review.user.profile.profile_picture %}
+            <img class="review-card__header-avatar"
+                 src="{{ review.user.profile.profile_picture }}"
+                 alt="profile image"
+            >
+        {% endif %}
+        <div class="review-card__header-data">
+            <span class="review-card__header-data-author">
+                {{ review.user.username }}
+            </span>
+            <span class="review-card__header-data-date">
+                {{ review.created_at|date:"d M Y H:i" }}
+            </span>
+        </div>
+    </div>
+    <p class="review-card__content">
+        {{ review.content }}
+    </p>
+</div>

@@ -1,26 +1,167 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from products.category_choices import CategoryChoices
+from products.choices.category_choices import CategoryChoices
+from products.choices.ram_choices import RamChoices
+from products.choices.screen_size_choices import ScreenSizeChoices
+from products.choices.storage_choices import StorageChoices
+from products.validators import InputFieldValidator, DigitFieldValidator
+from django.utils.text import slugify
 
+UserModel = get_user_model()
 
 class Product(models.Model):
-    image = models.ImageField(
-        upload_to="products/",
-        blank=True,
-        null=True,
+    name = models.CharField(
+        max_length=100,
+        validators=[
+            InputFieldValidator(message="Product name contains invalid characters.")
+        ]
     )
-    name = models.CharField(max_length=100)
-    description = models.TextField(max_length=3000)
-    price = models.TextField(max_length=4)
+    description = models.CharField(
+        max_length=3000,
+        validators=[
+            InputFieldValidator(message="Product description contains invalid characters.")
+        ]
+    )
+    price = models.CharField(
+        max_length=4,
+        validators=[
+            DigitFieldValidator()
+        ]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(
-        choices=CategoryChoices,
-        default=CategoryChoices.OTHER,
-        max_length=50
+    category = models.CharField(choices=CategoryChoices)
+    slug = models.SlugField(unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if not self.slug:
+            self.slug = slugify(f"{self.name}-{self.pk}")
+            super().save(*args, **kwargs)
+
+        super().save(*args, **kwargs)
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="images",
+    )
+    image = models.ImageField(upload_to="products/")
+
+class Laptop(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="laptop",
+    )
+    processor = models.CharField(
+        max_length=100,
+        validators=[
+            InputFieldValidator(message="Processor contains invalid characters.")
+        ]
+    )
+    ram = models.PositiveIntegerField(
+        choices=RamChoices,
+    )
+    storage = models.PositiveIntegerField(
+        choices=StorageChoices,
+    )
+    screen_size = models.PositiveIntegerField(
+        choices=ScreenSizeChoices,
+    )
+    gpu = models.CharField(
+        max_length=100,
+        validators=[
+            InputFieldValidator(message="GPU contains invalid characters.")
+        ]
     )
 
+class Computer(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="computer",
+    )
+    processor = models.CharField(
+        max_length=100,
+        validators=[
+            InputFieldValidator(message="Processor contains invalid characters.")
+        ]
+    )
+    ram = models.PositiveIntegerField(
+        choices=RamChoices,
+    )
+    storage = models.PositiveIntegerField(
+        choices=StorageChoices,
+    )
+    gpu = models.CharField(
+        max_length=100,
+        validators=[
+            InputFieldValidator(message="GPU contains invalid characters.")
+        ]
+    )
+
+class Keyboard(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="keyboard",
+    )
+    switch_type = models.CharField(
+        max_length=50,
+        validators=[
+            InputFieldValidator(message="Switch type contains invalid characters.")
+        ]
+    )
+    keyboard_layout = models.CharField(
+        max_length=50,
+        validators=[
+            InputFieldValidator(message="Keyboard layout contains invalid characters.")
+        ]
+    )
+    rgb_lighting = models.BooleanField(default=False)
+    wireless = models.BooleanField(default=False)
+
+class Mouse(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="mouse",
+    )
+    dpi = models.PositiveIntegerField()
+    wireless = models.BooleanField(default=False)
+
+class Headphones(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="headphones",
+    )
+    wireless = models.BooleanField(default=False)
+    noise_cancelling = models.BooleanField(default=False)
+    battery_life = models.CharField(
+        max_length=50,
+        blank=True,
+        validators=[
+            DigitFieldValidator()
+        ]
+    )
+    microphone = models.BooleanField(default=False)
+
+class Speakers(models.Model):
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="speakers",
+    )
+    power_output = models.PositiveIntegerField()
+    bluetooth = models.BooleanField(default=False)
+    portable = models.BooleanField(default=False)
+
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
-    user = models.CharField(max_length=100)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    to_product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')

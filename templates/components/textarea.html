@@ -1,0 +1,18 @@
+<div class="textarea mb-3">
+    <label for="{{ id }}" class="textarea__label form-label">
+        {{ label }}
+    </label>
+    <textarea
+        id="{{ id }}"
+        class="form-control{% if errors %} textarea__invalid{% endif %}"
+        name="{{ name }}"
+        rows="{{ rows|default:'3' }}"
+        cols="{{ cols|default:'6' }}"
+        placeholder="{{ placeholder }}"
+    >{{ value|default_if_none:'' }}</textarea>
+    {% if errors %}
+        <div class="invalid-feedback d-block">
+            {{ errors.0 }}
+        </div>
+    {% endif %}
+</div>

@@ -1,11 +1,12 @@
 {% extends 'common/base.html' %}
+{% load form_components %}
 
 {% block content %}
     <h1>Login</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% include "components/input.html" with field=form.username %}
-        {% include "components/input.html" with field=form.password %}
+        {% custom_input input_type="email" field_id=form.username.id_for_label name=form.username.html_name label=form.username.label %}
+        {% custom_input input_type="password" field_id=form.password.id_for_label name=form.password.html_name label=form.password.label %}
         <button>Login</button>
         <a href="{% url 'register' %}">Don't have account? Create one here.</a>
     </form>

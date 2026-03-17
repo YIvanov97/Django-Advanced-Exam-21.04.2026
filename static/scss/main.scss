@@ -9,14 +9,19 @@
 
 // Products
 @use "products/catalog";
+@use "products/add-product";
 @use "products/product-details";
 
 //Components
-@use "components/input";
 @use "components/button";
+@use "components/checkbox";
+@use "components/file-input";
+@use "components/input";
 @use "components/select";
+@use "components/textarea";
 @use "components/category-card";
 @use "components/product-card";
+@use "components/review-card";
 
 body {
   margin: 0;

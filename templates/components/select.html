@@ -1,6 +1,21 @@
-<div class="select">
-    <label for="{{ field.id_for_label }}" class="select__label">
-        {{ field.label }}
+<div class="select mb-3">
+    <label for="{{ id }}" class="select__label form-label">
+        {{ label }}
     </label>
-    {{ field }}
+    <select
+        id="{{ id }}"
+        name="{{ name }}"
+        class="form-select{% if errors %} select__invalid{% endif %}"
+    >
+        {% for option_value, option_label in options %}
+            <option value="{{ option_value }}" {% if value == option_value %}selected{% endif %}>
+                {{ option_label }}
+            </option>
+        {% endfor %}
+    </select>
+    {% if errors %}
+        <div class="invalid-feedback d-block">
+            {{ errors.0 }}
+        </div>
+    {% endif %}
 </div>

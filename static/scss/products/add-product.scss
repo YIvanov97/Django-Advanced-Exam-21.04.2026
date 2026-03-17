@@ -1,0 +1,13 @@
+@use "../colors";
+
+.add-product-form {
+  margin: 60px;
+
+  &__title {
+    font-size: 32px;
+    color: colors.$labelBlack;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}

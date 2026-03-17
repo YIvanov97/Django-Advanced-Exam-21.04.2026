@@ -1,7 +1,7 @@
 {% if href %}
     <a
        href="{{ href }}"
-       class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %}"
+       class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %} {% if is_small %} button__small {% endif %}"
        style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
     >
         {{ label }}
@@ -9,7 +9,7 @@
 {% else %}
     <button
        type="{{ button_type }}"
-       class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %}"
+       class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %} {% if is_small %} button__small {% endif %}"
        style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
        {% if is_disabled %} disabled {% endif %}
     >

@@ -1,11 +1,12 @@
 .button {
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 200;
   text-decoration: none;
   border: none;
   line-height: 10px;
+  max-height: max-content;
 
   &:hover {
     cursor: pointer;
@@ -13,6 +14,11 @@
 
   &__outline {
     border: 1px solid;
-    border-radius: 20px;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+
+  &__small {
+    padding: 5px 10px;
   }
 }

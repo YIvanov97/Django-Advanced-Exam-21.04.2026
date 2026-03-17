@@ -1,0 +1,13 @@
+{% load form_components %}
+
+<div class="details-form {{ form.prefix }}-fields">
+    {% for field in form %}
+        {% if field.field.widget.input_type == "checkbox" %}
+            {% custom_checkbox field_id=field.id_for_label label=field.label name=field.html_name checked=field.value errors=field.errors %}
+        {% elif field.field.widget.input_type == "select" %}
+            {% custom_select field_id=field.id_for_label label=field.label value=field.value name=field.html_name options=field.field.choices errors=field.errors %}
+        {% else %}
+            {% custom_input field_id=field.id_for_label label=field.label value=field.value name=field.html_name input_type=field.field.widget.input_type placeholder=field.field.widget.attrs.placeholder errors=field.errors %}
+        {% endif %}
+    {% endfor %}
+</div>

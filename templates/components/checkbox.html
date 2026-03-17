@@ -1,0 +1,18 @@
+<div class="checkbox form-check mb-3">
+    <input
+        id="{{ id }}"
+        class="form-check-input{% if errors %} checkbox__invalid{% endif %}"
+        type="checkbox"
+        name="{{ name }}"
+        {% if checked %}checked{% endif %}
+    >
+    <label class="checkbox__label form-check-label" for="{{ id }}">
+        {{ label }}
+    </label>
+
+    {% if errors %}
+        <div class="invalid-feedback d-block">
+            {{ errors.0 }}
+        </div>
+    {% endif %}
+</div>

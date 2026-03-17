@@ -1,0 +1,49 @@
+@use "../colors";
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid colors.$mainBlue;
+  border-radius: 10px;
+  max-width: max-content;
+  margin-bottom: 20px;
+  background-color: colors.$white;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    &-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    &-data{
+      display: flex;
+      flex-direction: column;
+
+      &-author {
+        font-size: 16px;
+        font-weight: 700;
+        color: colors.$labelBlack;
+      }
+
+      &-date {
+        font-size: 14px;
+        font-weight: 400;
+        color: colors.$labelGray;
+      }
+    }
+  }
+
+  &__content {
+    font-size: 14px;
+    font-weight: 400;
+    color: colors.$labelBlack;
+    margin: 0
+  }
+}

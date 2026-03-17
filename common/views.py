@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from products.category_choices import CategoryChoices
+from products.choices.category_choices import CategoryChoices
 from products.models import Product
 
 

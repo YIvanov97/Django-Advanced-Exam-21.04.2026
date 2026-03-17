@@ -1,4 +1,18 @@
-<div class="input">
-    <label class="input__label" for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-    {{ field }}
+<div class="input mb-3">
+    <label for="{{ id }}" class="input__label form-label">
+        {{ label }}
+    </label>
+    <input
+        id="{{ id }}"
+        class="form-control{% if errors %} input__invalid{% endif %}"
+        name="{{ name }}"
+        type="{{ type }}"
+        placeholder="{{ placeholder }}"
+        value="{{ value|default_if_none:'' }}"
+    >
+    {% if errors %}
+        <div class="invalid-feedback d-block">
+            {{ errors.0 }}
+        </div>
+    {% endif %}
 </div>
