@@ -11,10 +11,14 @@ DETAIL_FORM_CLASSES = {
     "speakers": SpeakersDetailsForm,
 }
 
-def get_product_details_forms(request=None):
+def get_product_details_forms(request=None, product=None):
     post_data = request.POST if request else None
 
     return {
-        key: form_class(post_data, prefix=key)
+        key: form_class(
+            post_data,
+            instance=getattr(product, key, None) if product else None,
+            prefix=key
+        )
         for key, form_class in DETAIL_FORM_CLASSES.items()
     }

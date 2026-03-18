@@ -62,9 +62,6 @@ class ProductBaseForm(forms.ModelForm):
             }
         }
 
-class ProductCreateForm(ProductBaseForm):
-    pass
-
 class LaptopDetailsForm(forms.ModelForm):
     class Meta:
         model = Laptop
@@ -192,6 +189,12 @@ class SpeakersDetailsForm(forms.ModelForm):
                 'required': 'Please enter the power output'
             }
         }
+
+class ProductCreateForm(ProductBaseForm):
+    pass
+
+class ProductEditForm(ProductBaseForm):
+    pass
 
 class ReviewForm(forms.ModelForm):
     class Meta:

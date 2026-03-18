@@ -3,7 +3,19 @@ from django import template
 register = template.Library()
 
 @register.inclusion_tag("components/button.html")
-def button(label="Button", href="", button_type="button", color="transparent", background_color="transparent", is_outline=False, is_disabled=False, is_small=False):
+def button(
+        label="Button",
+        href="",
+        button_type="button",
+        color="transparent",
+        background_color="transparent",
+        is_outline=False,
+        is_disabled=False,
+        is_small=False,
+        data_toggle="",
+        data_target="",
+        data_dismiss=""
+):
     return {
         "label": label,
         "href": href,
@@ -13,4 +25,7 @@ def button(label="Button", href="", button_type="button", color="transparent", b
         "is_outline": is_outline,
         "is_disabled": is_disabled,
         "is_small": is_small,
+        "data_toggle": data_toggle,
+        "data_target": data_target,
+        "data_dismiss": data_dismiss,
     }

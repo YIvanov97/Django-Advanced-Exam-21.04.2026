@@ -3,8 +3,8 @@
 {% load button %}
 {% load form_components %}
 {% block content %}
-    <div class="add-product-form">
-        <h1 class="add-product-form__title">Add product</h1>
+    <div class="product-form">
+        <h1 class="product-form__title">Add product</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% custom_file_input name="images" label="Product images" multiple=True errors=image_field_errors %}
@@ -17,5 +17,5 @@
     </div>
 {% endblock %}
 {% block scripts %}
-    <script src="{% static 'js/add-product-page.js' %}"></script>
+    <script src="{% static 'js/product-form-page.js' %}"></script>
 {% endblock %}

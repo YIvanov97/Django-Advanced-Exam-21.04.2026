@@ -1,9 +1,20 @@
-<div>
-    <form method="post" id="confirm-form" action="">
-      {% csrf_token %}
-      <div class="modal__actions">
-        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
-        <button type="submit" class="btn btn--danger" id="confirm-submit">Confirm</button>
-      </div>
-    </form>
+{% load button %}
+
+<div class="modal fade" id="{{ modal_id }}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{ action }}" method="post">
+                {% csrf_token %}
+                <div class="modal__header">
+                    <h3 class="modal__header-title">{{ title }}</h3>
+                    <button class="modal__header-close btn-close" type="button" data-bs-dismiss="modal"></button>
+                </div>
+                <p class="modal__subtitle">{{ subtitle }}</p>
+                <div class="modal__actions">
+                    {% button button_type="submit" label=confirm_label is_outline=True color="#D6674B" %}
+                    {% button button_type="button" label=cancel_label data_dismiss="modal" color="#393939" background_color="#88BDF2" %}
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

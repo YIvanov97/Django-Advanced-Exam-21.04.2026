@@ -2,6 +2,7 @@
 {% load static %}
 {% load button %}
 {% load form_components %}
+{% load modal %}
 {% block content %}
     <section class="product-details">
         <div class="product-details__image-container">
@@ -25,7 +26,11 @@
             <div class="product-details__data-price-container">
                 <span class="product-details__data-price">{{ product.price }}$</span>
                 {% if user.is_staff %}
-                    {% button label="Edit product" color="#393939" background_color="#88BDF2" %}
+                    {% url 'product-edit' product_slug=product.slug as edit_product_page_url %}
+                    {% button href=edit_product_page_url label="Edit product" color="#393939" background_color="#88BDF2" %}
+                    {% url 'product-delete' product_slug=product.slug as delete_product_url %}
+                    {% button label="Delete product" data_toggle="modal" data_target="#delete-product-modal" is_outline=True color="#D6674B" %}
+                    {% modal modal_id="delete-product-modal" title="Delete product" subtitle="Are you sure you want to delete this product?" action=delete_product_url confirm_label="Delete product" cancel_label="Cancel" data_bs_dismiss="modal" %}
                 {% else %}
                     {% button label="Add to cart" color="#393939" background_color="#88BDF2" %}
                 {% endif %}

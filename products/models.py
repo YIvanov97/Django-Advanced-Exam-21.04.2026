@@ -165,3 +165,8 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     to_product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+
+# class CartItem(models.Model):
+#     quantity = models.PositiveIntegerField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     to_product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')

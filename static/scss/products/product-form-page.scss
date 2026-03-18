@@ -1,6 +1,6 @@
 @use "../colors";
 
-.add-product-form {
+.product-form {
   margin: 60px;
 
   &__title {
@@ -9,5 +9,11 @@
     font-weight: 400;
     margin-bottom: 20px;
     text-align: center;
+  }
+
+  button {
+    display: flex;
+    justify-self: center;
+    margin-top: 20px;
   }
 }

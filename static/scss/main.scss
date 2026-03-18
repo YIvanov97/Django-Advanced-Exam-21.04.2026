@@ -9,7 +9,7 @@
 
 // Products
 @use "products/catalog";
-@use "products/add-product";
+@use "products/product-form-page";
 @use "products/product-details";
 
 //Components
@@ -19,6 +19,7 @@
 @use "components/input";
 @use "components/select";
 @use "components/textarea";
+@use "components/modal";
 @use "components/category-card";
 @use "components/product-card";
 @use "components/review-card";

@@ -1,0 +1,38 @@
+@use "../colors";
+
+.modal {
+  &-content {
+    padding: 20px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    &-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: colors.$labelBlack;
+      margin: 0;
+    }
+
+    &-close {
+      align-self: flex-start;
+      padding: 7px 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: colors.$labelBlack;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+  }
+}
