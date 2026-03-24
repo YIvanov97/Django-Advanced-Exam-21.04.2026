@@ -3,10 +3,10 @@
 
 {% block content %}
     <h1>Login</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post">
         {% csrf_token %}
-        {% custom_input input_type="email" field_id=form.username.id_for_label name=form.username.html_name label=form.username.label %}
-        {% custom_input input_type="password" field_id=form.password.id_for_label name=form.password.html_name label=form.password.label %}
+        {% custom_input input_type="email" field_id=form.username.id_for_label name=form.username.html_name label=form.username.label placeholder="Enter your email" errors=form.username.errors %}
+        {% custom_input input_type="password" field_id=form.password.id_for_label name=form.password.html_name label=form.password.label placeholder="Enter your password" errors=form.password.errors %}
         <button>Login</button>
         <a href="{% url 'register' %}">Don't have account? Create one here.</a>
     </form>

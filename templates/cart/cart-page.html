@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% load cart_product_card %}
+{% load button %}
+
+{% block content %}
+    <div class="cart">
+        <div class="cart__header" style="justify-content: {% if cart_products %} space-between {% else %} center {% endif %}">
+            <h1 class="cart__header-title">Cart</h1>
+            {% if cart_products %}
+                {% url 'remove-all-from-cart' as remove_all_from_cart_url %}
+                <form method="post" action="{{ remove_all_from_cart_url }}">
+                    {% csrf_token %}
+                    {% button button_type='submit' label='Clean cart' color='#FFFFFF' background_color='#DD3B44' %}
+                </form>
+            {% endif %}
+        </div>
+        {% if cart_products %}
+            <div class="cart__product-list">
+                <div class="cart__product-list-header">
+                    <span class="cart__product-list-header-label">Product</span>
+                    <span class="cart__product-list-header-label">Quantity</span>
+                    <span class="cart__product-list-header-label">Price</span>
+                    <span class="cart__product-list-header-label"></span>
+                </div>
+                {% for item in cart_products %}
+                    {% cart_product_card image=item.product.images.first.image.url name=item.product.name price=item.product.price quantity=item.quantity slug=item.product.slug %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <span class="cart__product-list-empty">Your cart is empty!</span>
+        {% endif %}
+    </div>
+{% endblock %}

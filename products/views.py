@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
+from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from products.forms import ProductCreateForm, ProductCategoryFilterForm, ProductSearchForm, ReviewForm, \
     ProductEditForm
 from products.helpers import handle_product_form_submission
-from products.models import Product
+from products.models import Product, Review
 from products.utils import get_product_details_forms
 
 
@@ -37,7 +38,7 @@ class Catalog(ListView):
 class AddProductView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ProductCreateForm
     model = Product
-    template_name = 'products/add-product-page.html'
+    template_name = 'products/pages/add-product-page.html'
     success_url = reverse_lazy('catalog')
 
     def test_func(self):
@@ -60,7 +61,7 @@ class AddProductView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'products/product-details-page.html'
+    template_name = 'products/pages/product-details-page.html'
     slug_url_kwarg = 'product_slug'
 
     def get_context_data(self, **kwargs):
@@ -79,7 +80,7 @@ class ProductDetailView(DetailView):
             review.to_product = product
             review.user = request.user
             review.save()
-            return redirect('product-details', pk=product.pk)
+            return redirect('product-details', product_slug=product.slug)
 
         context = self.get_context_data(review_form=form)
         return self.render_to_response(context)
@@ -87,7 +88,7 @@ class ProductDetailView(DetailView):
 class ProductEditView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductEditForm
-    template_name = 'products/edit-product-page.html'
+    template_name = 'products/pages/edit-product-page.html'
     slug_url_kwarg = 'product_slug'
 
     def get_context_data(self, **kwargs):
@@ -115,3 +116,15 @@ class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         product = get_object_or_404(Product, slug=kwargs["product_slug"])
         product.delete()
         return redirect("catalog")
+
+
+class DeleteReviewView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        review = get_object_or_404(Review, pk=self.kwargs["pk"])
+        return review.user == self.request.user
+
+    def post(self, request, *args, **kwargs):
+        review = get_object_or_404(Review, pk=self.kwargs["pk"])
+        product_slug = review.to_product.slug
+        review.delete()
+        return redirect("product-details", product_slug=product_slug)

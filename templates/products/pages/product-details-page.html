@@ -32,7 +32,11 @@
                     {% button label="Delete product" data_toggle="modal" data_target="#delete-product-modal" is_outline=True color="#D6674B" %}
                     {% modal modal_id="delete-product-modal" title="Delete product" subtitle="Are you sure you want to delete this product?" action=delete_product_url confirm_label="Delete product" cancel_label="Cancel" data_bs_dismiss="modal" %}
                 {% else %}
-                    {% button label="Add to cart" color="#393939" background_color="#88BDF2" %}
+                    {% url 'add-to-cart' product_slug=product.slug as add_to_cart_url %}
+                    <form method="post" action="{{ add_to_cart_url }}">
+                        {% csrf_token %}
+                        {% button button_type="submit" label="Add to cart" color="#393939" background_color="#88BDF2" %}
+                    </form>
                 {% endif %}
             </div>
             <div class="product-details__delivery-data">
@@ -75,17 +79,20 @@
         <h2 class="reviews__title">Reviews</h2>
         <div class="reviews__container">
             {% for review in product.reviews.all %}
-                {% include "components/review-card.html" with review=review %}
+                {% include "components/review-card.html" with user=request.user review=review %}
             {% empty %}
-                <span>No reviews</span>
+                <span class="reviews__container-empty-label">No reviews</span>
             {% endfor %}
         </div>
         {% if user.is_authenticated %}
-        <form class="reviews__form" method="post" action="{% url 'product-details' product_slug=product.slug %}">
-            {% csrf_token %}
-            {% custom_input field_id=review_form.content.id_for_label name=review_form.content.html_name label=review_form.content.label placeholder=review_form.content.field.widget.attrs.placeholder %}
-            {% button button_type="submit" label="Add review" color="#393939" background_color="#88BDF2" %}
-        </form>
+            {% if user.is_staff %}
+            {% else %}
+                <form class="reviews__form" method="post" action="{% url 'product-details' product_slug=product.slug %}">
+                    {% csrf_token %}
+                    {% custom_input field_id=review_form.content.id_for_label name=review_form.content.html_name label=review_form.content.label placeholder=review_form.content.field.widget.attrs.placeholder %}
+                    {% button button_type="submit" label="Add review" color="#393939" background_color="#88BDF2" %}
+                </form>
+            {% endif %}
         {% else %}
             <div class="reviews__login">
                 <span class="reviews__login-message">You must be logged in to leave a review.</span>

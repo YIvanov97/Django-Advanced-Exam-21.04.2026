@@ -1,0 +1,46 @@
+@use '../colors';
+
+.cart-product-card {
+  display: grid;
+  grid-template-columns: 2fr 120px 120px 80px;
+  column-gap: 20px;
+  align-items: center;
+  border-top: 1px solid colors.$mainBlue;
+  padding: 10px 20px;
+  background-color: colors.$white;
+
+  &__data {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+    &-image {
+      width: 50px;
+      height: 50px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-value {
+      font-size: 16px;
+      font-weight: 400;
+      color: colors.$labelBlack;
+    }
+  }
+
+  form {
+    align-self: center;
+  }
+
+  button {
+    display: flex;
+    align-self: center;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}

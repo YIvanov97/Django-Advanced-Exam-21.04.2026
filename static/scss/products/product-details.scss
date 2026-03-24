@@ -5,7 +5,6 @@
   flex-direction: row;
   gap: 60px;
   width: 100%;
-  margin-top: 20px;
   padding: 40px;
 
   &__image-container {
@@ -174,6 +173,19 @@
     margin: 40px 0;
   }
 
+  &__container {
+    display: flex;
+
+    &-empty-label {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: colors.$labelGray;
+      margin: 20px;
+    }
+  }
+
   &__form {
     display: flex;
     flex-direction: row;
@@ -182,7 +194,7 @@
     width: 100%;
 
     button {
-      margin-top: 6px;
+      margin-top: 7px;
     }
   }
 

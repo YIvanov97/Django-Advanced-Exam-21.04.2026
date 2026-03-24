@@ -1,0 +1,55 @@
+@use '../colors';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin: 40px;
+  max-width: 635px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+    align-items: center;
+    width: 100%;
+
+    &-title {
+      font-size: 52px;
+      font-weight: 400;
+      color: colors.$labelBlack;
+    }
+  }
+
+  &__product-list {
+    padding: 20px;
+    background-color: colors.$white;
+    width: 100%;
+
+    &-header {
+      display: grid;
+      grid-template-columns: 2fr 120px 120px 80px;
+      column-gap: 20px;
+      padding: 10px 20px;
+      border-bottom: 1px solid colors.$lightestBlue;
+
+      &-label {
+        font-size: 14px;
+        font-weight: 400;
+        color: colors.$labelGray;
+        text-align: left;
+
+        &:nth-child(2), &:nth-child(3) {
+          text-align: center;
+        }
+      }
+    }
+
+    &-empty {
+      font-size: 24px;
+      font-weight: 700;
+      color: colors.$labelBlack;
+    }
+  }
+}

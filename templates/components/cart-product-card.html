@@ -1,0 +1,21 @@
+{% load button %}
+
+<div class="cart-product-card">
+    <div class="cart-product-card__data">
+        <div class="cart-product-card__data-image">
+            <img alt="cart product image" src="{{ image }}"/>
+        </div>
+        <span class="cart-product-card__data-value">{{ name }}</span>
+    </div>
+    <div class="cart-product-card__data">
+        <span class="cart-product-card__data-value">{{ quantity }}</span>
+    </div>
+    <div class="cart-product-card__data">
+        <span class="cart-product-card__data-value">{{ price }}$</span>
+    </div>
+    {% url 'remove-from-cart' product_slug=slug as remove_from_cart_url %}
+    <form method="post" action="{{ remove_from_cart_url }}">
+        {% csrf_token %}
+        {% button button_type="submit" icon="bi bi-trash" color="#FFFFFF" background_color="#DD3B44" %}
+    </form>
+</div>

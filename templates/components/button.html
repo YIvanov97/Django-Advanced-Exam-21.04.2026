@@ -4,7 +4,11 @@
        class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %} {% if is_small %} button__small {% endif %}"
        style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
     >
-        {{ label }}
+        {% if icon != "" %}
+             <i class="{{ icon }}"></i>
+        {% else %}
+            {{ label }}
+        {% endif %}
     </a>
 {% else %}
     <button
@@ -16,6 +20,10 @@
        {% if data_target %} data-bs-target="{{ data_target }}" {% endif %}
        {% if data_dismiss %} data-bs-dismiss="{{ data_dismiss }}" {% endif %}
     >
-        {{ label }}
+        {% if icon != "" %}
+             <i class="{{ icon }}"></i>
+        {% else %}
+            {{ label }}
+        {% endif %}
     </button>
 {% endif %}

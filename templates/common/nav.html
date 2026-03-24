@@ -1,3 +1,5 @@
+{% load static %}
+
 <ul class="navigation">
   <li class="navigation__item-container">
     <a class="navigation__item" href="{% url 'home-page' %}">Home</a>
@@ -5,13 +7,7 @@
   <li class="navigation__item-container">
     <a class="navigation__item" href="{% url 'catalog' %}">Catalog</a>
   </li>
-  <li class="navigation__item-container">
-    <a class="navigation__item" href="#">Cart</a>
-  </li>
     {% if request.user.is_authenticated %}
-      <li class="navigation__item-container">
-        <a class="navigation__item" href="{% url 'profile-details' request.user.pk %}">Profile</a>
-      </li>
       <li class="navigation__item-container">
         <a class="navigation__item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
       </li>
@@ -28,7 +24,34 @@
         <a class="navigation__item" href="{% url 'register' %}">Register</a>
       </li>
     {% endif %}
+    {% if not request.user.is_staff %}
+        <li class="navigation__cart-container">
+          <a href="{% url 'cart' %}" class="navigation__cart position-relative">
+            <i class="bi bi-cart3 fs-4"></i>
+            {% if cart_items_count %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    {{ cart_items_count }}
+                </span>
+            {% endif %}
+          </a>
+        </li>
+    {% endif %}
+    {% if request.user.is_authenticated and not request.user.is_staff %}
+      <li id="profile" class="navigation__profile-container">
+        <div class="navigation__profile">
+          {% if request.user.profile.profile_picture %}
+            <img alt="profile picture" src="{{ request.user.profile.profile_picture }}"/>
+          {% else %}
+            <i class="bi bi-person-circle"></i>
+          {% endif %}
+        </div>
+        {% include 'components/profile-dialog.html' with request=request %}
+      </li>
+    {% endif %}
 </ul>
+{% block scripts %}
+    <script src="{% static 'js/navigation.js' %}"></script>
+{% endblock %}
 
 <form style="display: none;" id="logout-form" method="post" action="{% url 'logout' %}">
     {% csrf_token %}

@@ -9,6 +9,13 @@
   max-width: max-content;
   margin-bottom: 20px;
   background-color: colors.$white;
+  position: relative;
+
+  &__delete-button {
+    position: absolute;
+    right: -18px;
+    top: -13px;
+  }
 
   &__header {
     display: flex;

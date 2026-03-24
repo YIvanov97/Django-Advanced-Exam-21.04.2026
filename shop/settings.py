@@ -37,6 +37,7 @@ PROJECT_APPS = [
     'accounts',
     'orders',
     'products',
+    'cart'
 ]
 
 INSTALLED_APPS = [
@@ -83,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart_items_count',
             ],
         },
     },
@@ -153,3 +155,5 @@ AUTH_USER_MODEL = 'accounts.AppUser'
 LOGIN_REDIRECT_URL = reverse_lazy('home-page')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('home-page')
+
+CART_SESSION_ID = 'cart'

@@ -5,12 +5,12 @@
     </div>
     <div class="product-tech-specs__list-cell-element">
         <span>Bluetooth:</span>
-        <span>{{ details.bluetooth }}</span>
+        <span>{% if details.bluetooth %} Yes {% else %} No {% endif %}</span>
     </div>
 </div>
 <div class="product-tech-specs__list-cell">
     <div class="product-tech-specs__list-cell-element">
         <span>Portable:</span>
-        <span>{{ details.portable }}'</span>
+        <span>{% if details.portable %} Yes {% else %} No {% endif %}</span>
     </div>
 </div>

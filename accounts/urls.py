@@ -1,11 +1,11 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 
 from accounts import views
 from django.urls import path, include
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
-    path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('login/', views.AppLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path("profile/<int:pk>/", include([
         path("", views.ProfileView.as_view(), name="profile-details"),

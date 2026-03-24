@@ -1,4 +1,14 @@
+{% load button %}
+
 <div class="review-card">
+    {% if user == review.user %}
+        <div class="review-card__delete-button">
+            <form method="post" action="{% url 'delete-review' pk=review.pk %}">
+                {% csrf_token %}
+                {% button button_type="submit" icon="bi bi-x-circle" is_small=True color="#ffffff" background_color="#dc3545" %}
+            </form>
+        </div>
+    {% endif %}
     <div class="review-card__header">
         {% if review.user.profile.profile_picture %}
             <img class="review-card__header-avatar"

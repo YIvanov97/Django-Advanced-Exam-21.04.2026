@@ -21,6 +21,11 @@
       align-items: center;
       width: 100%;
     }
+
+    &-category-filter button,
+    &-search-filter button {
+      margin-top: 7px;
+    }
   }
 
   &__list {

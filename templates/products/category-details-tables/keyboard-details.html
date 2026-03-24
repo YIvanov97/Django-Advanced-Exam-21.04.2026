@@ -5,16 +5,16 @@
     </div>
     <div class="product-tech-specs__list-cell-element">
         <span>Keyboard layout:</span>
-        <span>{{ details.keyboard_layout }}GB</span>
+        <span>{{ details.keyboard_layout }}</span>
     </div>
 </div>
 <div class="product-tech-specs__list-cell">
     <div class="product-tech-specs__list-cell-element">
         <span>RGB lighting:</span>
-        <span>{{ details.rgb_lighting }}GB</span>
+        <span>{% if details.rgb_lighting %} Yes {% else %} No {% endif %}</span>
     </div>
     <div class="product-tech-specs__list-cell-element">
         <span>Wireless:</span>
-        <span>{{ details.wireless }}</span>
+        <span>{% if details.wireless %} Yes {% else %} No {% endif %}</span>
     </div>
 </div>

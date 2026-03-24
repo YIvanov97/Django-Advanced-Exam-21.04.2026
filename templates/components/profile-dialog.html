@@ -1,0 +1,21 @@
+<div id="profile-dialog" class="navigation__profile-dialog" style="display: none">
+    <div class="navigation__profile-dialog-arrow"></div>
+    <a class="navigation__profile-dialog-row" href="{% url 'profile-details' request.user.pk %}">
+        {% if request.user.profile.profile_picture %}
+            <img alt="profile picture" src="{{ request.user.profile.profile_picture }}"/>
+        {% else %}
+            <i class="bi bi-person-circle"></i>
+        {% endif %}
+        <div class="navigation__profile-dialog-row-data">
+            <span class="navigation__profile-dialog-row-title">Profile</span>
+            <span class="navigation__profile-dialog-row-subtitle">Manage your account</span>
+        </div>
+    </a>
+    <a class="navigation__profile-dialog-row" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
+        <i class="bi bi-box-arrow-right"></i>
+        <div class="navigation__profile-dialog-row-data">
+            <span class="navigation__profile-dialog-row-title">Logout</span>
+            <span class="navigation__profile-dialog-row-subtitle">Sign out of your account</span>
+        </div>
+    </a>
+</div>
