@@ -5,12 +5,14 @@
 @use "common/home-page";
 
 // Accounts
-@use "accounts/profile";
+@use "accounts/profile-page";
+@use "accounts/edit-profile-page";
+@use "accounts/delete-profile-page";
 
 // Products
 @use "products/catalog";
 @use "products/product-form-page";
-@use "products/product-details";
+@use "products/product-details-page";
 
 // Cart
 @use "cart/cart";

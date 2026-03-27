@@ -3,11 +3,11 @@
 <div class="product-base-form">
     {% for field in form %}
         {% if field.widget_type == "textarea" %}
-            {% custom_textarea field_id=field.id_for_label label=field.label value=field.value name=field.html_name placeholder=field.field.widget.attrs.placeholder rows=field.field.widget.attrs.rows cols=field.field.widget.attrs.cols errors=field.errors %}
+            {% custom_textarea field_id=field.id_for_label label=field.label value=field.value name=field.html_name placeholder=field.field.widget.attrs.placeholder rows=field.field.widget.attrs.rows cols=field.field.widget.attrs.cols errors=field.errors disabled=disabled %}
         {% elif field.field.widget.input_type == "select" %}
-            {% custom_select field_id=field.id_for_label label=field.label value=field.value name=field.html_name options=field.field.choices errors=field.errors %}
+            {% custom_select field_id=field.id_for_label label=field.label value=field.value name=field.html_name options=field.field.choices errors=field.errors disabled=disabled %}
         {% else %}
-            {% custom_input field_id=field.id_for_label label=field.label value=field.value name=field.html_name input_type=field.field.widget.input_type placeholder=field.field.widget.attrs.placeholder errors=field.errors %}
+            {% custom_input field_id=field.id_for_label label=field.label value=field.value name=field.html_name input_type=field.field.widget.input_type placeholder=field.field.widget.attrs.placeholder errors=field.errors disabled=disabled %}
         {% endif %}
     {% endfor %}
 </div>

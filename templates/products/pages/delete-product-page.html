@@ -1,0 +1,33 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load button %}
+{% load form_components %}
+{% block content %}
+    <div class="product-form product-delete">
+        <div class="product-delete__image-container">
+            <img id="main-image" alt="product-image" src="{{ product.images.first.image.url }}"/>
+            <div class="product-delete__thumbnails">
+                <div id="thumbnail-indicator" class="product-delete__thumbnails-indicator"></div>
+                {% for img in product.images.all %}
+                    <img alt="product-thumbnail" class="product-thumbnail" src="{{ img.image.url }}">
+                {% endfor %}
+            </div>
+        </div>
+        <form class="product-delete__form" method="post" enctype="multipart/form-data" data-readonly="true">
+            <h1 class="product-delete__form-title">Delete product</h1>
+            <div class="separator"></div>
+            {% csrf_token %}
+            {% include 'products/forms/product-base-form.html' with form=product_form disabled=True %}
+            <div class="separator"></div>
+            <h2 class="product-delete__form-subtitle">{{ product.category|capfirst }} details</h2>
+            {% for _, details_form in product_details_forms.items %}
+                {% include 'products/forms/details-form.html' with form=details_form disabled=True %}
+            {% endfor %}
+            {% button button_type="submit" label="Delete product" color="#FFFFFF" background_color="#DD3B44" %}
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/product-images.js' %}"></script>
+    <script src="{% static 'js/product-form-page.js' %}"></script>
+{% endblock %}

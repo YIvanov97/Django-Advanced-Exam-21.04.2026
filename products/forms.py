@@ -196,6 +196,9 @@ class ProductCreateForm(ProductBaseForm):
 class ProductEditForm(ProductBaseForm):
     pass
 
+class ProductDeleteForm(ProductBaseForm):
+    pass
+
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review

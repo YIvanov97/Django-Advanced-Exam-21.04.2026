@@ -9,6 +9,7 @@
         rows="{{ rows|default:'3' }}"
         cols="{{ cols|default:'6' }}"
         placeholder="{{ placeholder }}"
+        {% if disabled %} disabled {% endif %}
     >{{ value|default_if_none:'' }}</textarea>
     {% if errors %}
         <div class="invalid-feedback d-block">

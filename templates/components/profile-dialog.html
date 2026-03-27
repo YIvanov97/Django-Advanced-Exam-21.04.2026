@@ -2,7 +2,7 @@
     <div class="navigation__profile-dialog-arrow"></div>
     <a class="navigation__profile-dialog-row" href="{% url 'profile-details' request.user.pk %}">
         {% if request.user.profile.profile_picture %}
-            <img alt="profile picture" src="{{ request.user.profile.profile_picture }}"/>
+            <img alt="profile picture" src="{{ request.user.profile.profile_picture.url }}"/>
         {% else %}
             <i class="bi bi-person-circle"></i>
         {% endif %}

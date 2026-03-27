@@ -5,6 +5,7 @@
         type="checkbox"
         name="{{ name }}"
         {% if checked %}checked{% endif %}
+        {% if disabled %} disabled {% endif %}
     >
     <label class="checkbox__label form-check-label" for="{{ id }}">
         {{ label }}

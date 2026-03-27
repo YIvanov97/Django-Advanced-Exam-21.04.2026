@@ -13,8 +13,26 @@
 
   &__delete-button {
     position: absolute;
-    right: -18px;
-    top: -13px;
+    right: -10px;
+    top: -10px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50%;
+      height: 21px;
+      width: 21px;
+      background-color: colors.$mainRed;
+    }
+
+    i {
+      font-size: 20px;
+      line-height: 1;
+      margin-top: 1px;
+      color: colors.$white;
+    }
   }
 
   &__header {
@@ -27,6 +45,11 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
+    }
+
+    i {
+      font-size: 40px;
+      color: colors.$mainBlue;
     }
 
     &-data{

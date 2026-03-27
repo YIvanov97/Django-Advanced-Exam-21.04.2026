@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load form_components %}
+{% load button %}
+{% block content %}
+    <div class="profile-form-container">
+        <form id="clear-profile-picture" method="post" action="{% url 'remove-profile-picture' request.user.pk %}">
+            {% csrf_token %}
+            <button class="clear-profile-picture__button">
+                <i class="clear-profile-picture__button-icon bi bi-x-circle"></i>
+            </button>
+        </form>
+        <form class="profile-form" method="post" action="{% url 'edit-profile' request.user.pk %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="profile-form__profile-picture">
+                <label class="profile-form__profile-picture-label" for="profile-picture">
+                    <img id="profile-picture-preview" alt="profile picture" src="{% if form.instance.profile_picture %} {{ form.instance.profile_picture.url }} {% endif %}">
+                    <i id="profile-picture-placeholder" class="bi bi-image-fill"></i>
+                </label>
+                <input id="profile-picture" name="{{ form.profile_picture.html_name }}" type="file" accept="image/*" hidden>
+            </div>
+            <div class="profile-form__profile-data">
+                <h1 class="profile-form__profile-data-title">Edit profile</h1>
+                {% for field in form %}
+                    {% if field.name != "profile_picture" %}
+                        {% custom_input label=field.label value=field.value name=field.html_name input_type=field.field.widget.input_type placeholder=field.field.widget.attrs.placeholder errors=field.errors %}
+                    {% endif %}
+                {% endfor %}
+                {% button button_type="submit" label="Edit profile" color="#393939" background_color="#BDDDFC" %}
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/edit-profile-page.js' %}"></script>
+{% endblock %}

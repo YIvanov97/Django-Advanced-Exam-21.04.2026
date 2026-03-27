@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const mainImage = document.getElementById('main-image');
-    const thumbnails = document.querySelectorAll(".product-details__thumbnail");
+    const thumbnails = document.querySelectorAll(".product-thumbnail");
     const indicator = document.getElementById("thumbnail-indicator");
     const thumbnailsGap = 20 * 2
 

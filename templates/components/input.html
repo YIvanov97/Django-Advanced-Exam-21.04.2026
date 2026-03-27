@@ -6,9 +6,10 @@
         id="{{ id }}"
         class="form-control{% if errors %} input__invalid{% endif %}"
         name="{{ name }}"
-        type="{{ type }}"
+        type="{% if type == 'date' and disabled %}text{% else %}{{ type }}{% endif %}"
         placeholder="{{ placeholder }}"
-        value="{{ value|default_if_none:'' }}"
+        value="{% if type == 'date' %}{{ value|date:'d.m.Y' }}{% else %}{{ value|default_if_none:'' }}{% endif %}"
+        {% if disabled %} disabled {% endif %}
     >
     {% if errors %}
         <div class="invalid-feedback d-block">

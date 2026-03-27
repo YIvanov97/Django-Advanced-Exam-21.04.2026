@@ -104,13 +104,32 @@
       padding: 10px;
       text-decoration: none;
       gap: 10px;
+      border-radius: 10px 10px 0 0;
+      align-items: center;
 
       &:hover {
         background-color: colors.$lightestBlue;
       }
 
+      &:last-of-type {
+        border-radius: 0 0 10px 10px;
+      }
+
       &:nth-of-type(1) {
         border-bottom: 1px solid colors.$lightBlue;
+      }
+
+      i {
+        font-size: 32px;
+        color: colors.$mainBlue;
+        line-height: 1;
+        padding: 0 6px;
+      }
+
+      img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
       }
 
       &-data {
@@ -128,17 +147,6 @@
         font-size: 14px;
         font-weight: 400;
         color: colors.$labelGray;
-      }
-
-      img {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-      }
-
-      i {
-        font-size: 32px;
-        color: colors.$mainBlue;
       }
     }
   }

@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("components/input.html")
-def custom_input(field_id="", label="", value="", name="", input_type="text", placeholder="", errors=None):
+def custom_input(field_id="", label="", value="", name="", input_type="text", placeholder="", errors=None, disabled=False):
     return {
         "id": field_id,
         "label": label,
@@ -13,22 +13,24 @@ def custom_input(field_id="", label="", value="", name="", input_type="text", pl
         "type": input_type,
         "placeholder": placeholder,
         "errors": errors or [],
+        "disabled": disabled,
     }
 
 
 @register.inclusion_tag("components/checkbox.html")
-def custom_checkbox(field_id="", label="", name="", checked=False, errors=None):
+def custom_checkbox(field_id="", label="", name="", checked=False, errors=None, disabled=False):
     return {
         "id": field_id,
         "label": label,
         "name": name,
         "checked": checked,
         "errors": errors or [],
+        "disabled": disabled,
     }
 
 
 @register.inclusion_tag("components/select.html")
-def custom_select(field_id="", label="", value="", name="", options=None, errors=None):
+def custom_select(field_id="", label="", value="", name="", options=None, errors=None, disabled=False):
     return {
         "id": field_id,
         "label": label,
@@ -36,11 +38,12 @@ def custom_select(field_id="", label="", value="", name="", options=None, errors
         "name": name,
         "options": options,
         "errors": errors or [],
+        "disabled": disabled,
     }
 
 
 @register.inclusion_tag("components/textarea.html")
-def custom_textarea(field_id="", label="", value="", name="", placeholder="", rows=3, cols=6, errors=None):
+def custom_textarea(field_id="", label="", value="", name="", placeholder="", rows=3, cols=6, errors=None, disabled=False):
     return {
         "id": field_id,
         "label": label,
@@ -50,6 +53,7 @@ def custom_textarea(field_id="", label="", value="", name="", placeholder="", ro
         "rows": rows,
         "cols": cols,
         "errors": errors or [],
+        "disabled": disabled,
     }
 
 

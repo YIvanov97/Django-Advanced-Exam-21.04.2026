@@ -1,13 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+
+from products.constants import CATEGORY_DETAILS_TEMPLATES
 from products.forms import ProductCreateForm, ProductCategoryFilterForm, ProductSearchForm, ReviewForm, \
-    ProductEditForm
-from products.helpers import handle_product_form_submission
+    ProductEditForm, ProductDeleteForm
+from products.mixins import ProductManagementMixin
 from products.models import Product, Review
-from products.utils import get_product_details_forms
+from products.utils import get_product_details_forms, handle_product_form_submission
 
 
 class Catalog(ListView):
@@ -29,11 +31,10 @@ class Catalog(ListView):
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        kwargs.update({
-            'category_filter_form': ProductCategoryFilterForm(),
-            'search_form': ProductSearchForm()
-        })
-        return super().get_context_data(object_list=object_list, **kwargs)
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context["category_filter_form"] = ProductCategoryFilterForm()
+        context["search_form"] = ProductSearchForm()
+        return context
 
 class AddProductView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ProductCreateForm
@@ -65,11 +66,12 @@ class ProductDetailView(DetailView):
     slug_url_kwarg = 'product_slug'
 
     def get_context_data(self, **kwargs):
-        kwargs.update({
-            'review_form': ReviewForm(),
-        })
-
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        product = self.object
+        context["review_form"] = ReviewForm()
+        context["details_template"] = CATEGORY_DETAILS_TEMPLATES.get(product.category)
+        context["details"] = getattr(product, product.category, None)
+        return context
 
     def post(self, request, *args, **kwargs):
         product = self.get_object()
@@ -85,22 +87,16 @@ class ProductDetailView(DetailView):
         context = self.get_context_data(review_form=form)
         return self.render_to_response(context)
 
-class ProductEditView(LoginRequiredMixin, UpdateView):
-    model = Product
+class ProductEditView(ProductManagementMixin, UpdateView):
     form_class = ProductEditForm
     template_name = 'products/pages/edit-product-page.html'
-    slug_url_kwarg = 'product_slug'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        product = self.object
-        context["product_form"] = context["form"]
-        context["product_details_forms"] = get_product_details_forms(product=product)
-        return context
+        return self.get_product_context(context['form'], self.object, context)
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-
         result = handle_product_form_submission(request, ProductEditForm, self.object, False)
 
         if result["is_valid"]:
@@ -108,9 +104,14 @@ class ProductEditView(LoginRequiredMixin, UpdateView):
 
         return render(request, self.template_name, result)
 
-class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    def test_func(self):
-        return self.request.user.is_staff
+class ProductDeleteView(ProductManagementMixin, DeleteView):
+    form_class = ProductDeleteForm
+    template_name = 'products/pages/delete-product-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        delete_form = self.form_class(instance=self.object)
+        return self.get_product_context(delete_form, self.object, context)
 
     def post(self, request, *args, **kwargs):
         product = get_object_or_404(Product, slug=kwargs["product_slug"])

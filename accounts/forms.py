@@ -15,7 +15,32 @@ class RegisterForm(UserCreationForm):
 class ProfileBaseForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
+        exclude = ["user"]
+        widgets = {
+            "first_name": forms.TextInput(
+                attrs={"placeholder": "Enter first name"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"placeholder": "Enter last name"}
+            ),
+            "date_of_birth": forms.DateInput(
+                attrs={
+                    "class": 'form-control',
+                    "type": "date",
+                    "placeholder": "Enter date of birth"
+                }
+            ),
+        }
 
 class ProfileEditForm(ProfileBaseForm):
     pass
+
+class UserDeleteForm(forms.ModelForm):
+    class Meta:
+        model = UserModel
+        fields = ['username', 'email']
+
+class ProfileDeleteForm(ProfileBaseForm):
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'date_of_birth']

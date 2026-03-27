@@ -8,10 +8,10 @@
     <a class="navigation__item" href="{% url 'catalog' %}">Catalog</a>
   </li>
     {% if request.user.is_authenticated %}
-      <li class="navigation__item-container">
-        <a class="navigation__item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
-      </li>
         {% if request.user.is_staff %}
+            <li class="navigation__item-container">
+              <a class="navigation__item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+            </li>
             <li class="navigation__item-container">
               <a class="navigation__item" href="{% url 'add-product' %}">Add product</a>
             </li>
@@ -40,7 +40,7 @@
       <li id="profile" class="navigation__profile-container">
         <div class="navigation__profile">
           {% if request.user.profile.profile_picture %}
-            <img alt="profile picture" src="{{ request.user.profile.profile_picture }}"/>
+            <img alt="profile picture" src="{{ request.user.profile.profile_picture.url }}"/>
           {% else %}
             <i class="bi bi-person-circle"></i>
           {% endif %}

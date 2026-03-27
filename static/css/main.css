@@ -89,12 +89,28 @@
   padding: 10px;
   text-decoration: none;
   gap: 10px;
+  border-radius: 10px 10px 0 0;
+  align-items: center;
 }
 .navigation__profile-dialog-row:hover {
   background-color: #E6F3FF;
 }
+.navigation__profile-dialog-row:last-of-type {
+  border-radius: 0 0 10px 10px;
+}
 .navigation__profile-dialog-row:nth-of-type(1) {
   border-bottom: 1px solid #BDDDFC;
+}
+.navigation__profile-dialog-row i {
+  font-size: 32px;
+  color: #88BDF2;
+  line-height: 1;
+  padding: 0 6px;
+}
+.navigation__profile-dialog-row img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
 }
 .navigation__profile-dialog-row-data {
   display: flex;
@@ -109,15 +125,6 @@
   font-size: 14px;
   font-weight: 400;
   color: #707070;
-}
-.navigation__profile-dialog-row img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-}
-.navigation__profile-dialog-row i {
-  font-size: 32px;
-  color: #88BDF2;
 }
 
 .heading {
@@ -230,28 +237,60 @@
   display: flex;
   flex-direction: column;
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: #FFFFFF;
   justify-content: center;
   max-width: max-content;
   justify-self: center;
+  position: relative;
+}
+.profile__edit-button, .profile__delete-button {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  padding: 5px;
+  background-color: #88BDF2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.profile__edit-button i, .profile__delete-button i {
+  font-size: 14px;
+  line-height: 1;
+  color: #FFFFFF;
+}
+.profile__edit-button:hover, .profile__delete-button:hover {
+  cursor: pointer;
+}
+.profile__delete-button {
+  right: 20px;
+  background-color: #DD3B44;
 }
 .profile__image-container {
+  display: flex;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
   align-self: center;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 .profile__image-container img {
   width: 100%;
   height: 100%;
 }
+.profile__image-container i {
+  font-size: 80px;
+  color: #88BDF2;
+  line-height: 1;
+}
 .profile__data-row {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 .profile__data-row-label {
@@ -265,6 +304,102 @@
   font-weight: 400;
   color: #393939;
   margin: 0;
+}
+
+.profile-form-container {
+  margin: 60px;
+  position: relative;
+}
+.profile-form-container .clear-profile-picture__button {
+  height: 24px;
+  width: 24px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  right: 52%;
+  top: -10px;
+}
+.profile-form-container .clear-profile-picture__button-icon {
+  font-size: 24px;
+  line-height: 1;
+  background-color: #DD3B44;
+  border-radius: 50%;
+  color: #FFFFFF;
+}
+.profile-form-container .clear-profile-picture__button:hover {
+  cursor: pointer;
+}
+.profile-form-container .profile-form {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+.profile-form-container .profile-form__profile-picture {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+.profile-form-container .profile-form__profile-picture-label {
+  display: flex;
+  flex: 1;
+  position: relative;
+  background-color: #BDBDBD;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.profile-form-container .profile-form__profile-picture-label:hover {
+  cursor: pointer;
+}
+.profile-form-container .profile-form__profile-picture-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-form-container .profile-form__profile-picture-label #profile-picture-placeholder {
+  position: absolute;
+  font-size: 52px;
+  line-height: 1;
+  color: #707070;
+}
+.profile-form-container .profile-form__profile-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: max-content;
+}
+.profile-form-container .profile-form__profile-data-title {
+  font-size: 32px;
+  color: #393939;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.profile-form-container .profile-form__profile-data button {
+  display: flex;
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+.delete-profile-form {
+  display: flex;
+  flex-direction: column;
+  margin: 60px;
+}
+.delete-profile-form__title {
+  font-size: 32px;
+  color: #393939;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.delete-profile-form button {
+  align-self: center;
 }
 
 .catalog {
@@ -313,6 +448,69 @@
   display: flex;
   justify-self: center;
   margin-top: 20px;
+}
+
+.product-delete {
+  display: flex;
+  flex-direction: row;
+  margin: 40px;
+  gap: 60px;
+}
+.product-delete__image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 420px;
+  max-width: 420px;
+}
+.product-delete #main-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+.product-delete__thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+}
+.product-delete__thumbnails-indicator {
+  position: absolute;
+  border: 2px solid #BDDDFC;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  z-index: 2;
+}
+.product-delete__thumbnails img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.product-delete__thumbnails img:not(.thumbnail-active):hover {
+  transform: scale(1.1);
+}
+.product-delete__form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.product-delete__form-title {
+  font-size: 32px;
+  color: #393939;
+  font-weight: 400;
+}
+.product-delete__form-subtitle {
+  font-size: 24px;
+  color: #393939;
+  font-weight: 400;
+}
+.product-delete__form button {
+  align-self: flex-start;
 }
 
 .product-details {
@@ -571,6 +769,11 @@
 .button__small {
   padding: 5px 10px;
 }
+.button.disabled {
+  background-color: #BDBDBD;
+  color: #FFFFFF;
+  cursor: default;
+}
 
 .checkbox__label {
   font-size: 16px;
@@ -728,8 +931,24 @@
 }
 .review-card__delete-button {
   position: absolute;
-  right: -18px;
-  top: -13px;
+  right: -10px;
+  top: -10px;
+}
+.review-card__delete-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  height: 21px;
+  width: 21px;
+  background-color: #DD3B44;
+}
+.review-card__delete-button i {
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 1px;
+  color: #FFFFFF;
 }
 .review-card__header {
   display: flex;
@@ -741,6 +960,10 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.review-card__header i {
+  font-size: 40px;
+  color: #88BDF2;
 }
 .review-card__header-data {
   display: flex;

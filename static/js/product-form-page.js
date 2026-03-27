@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const categorySelect = document.getElementById("id_category");
+    const isReadonlyMode = categorySelect.closest("form")?.dataset.readonly === "true";
 
     function hideAllGroups() {
         document.querySelectorAll(".details-form").forEach(group => {
@@ -14,20 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function toggleGroups() {
         hideAllGroups();
-
         const selected = categorySelect.value;
         const visibleGroup = document.querySelector("." + selected + "-fields");
 
         if (visibleGroup) {
             visibleGroup.style.display = "block";
 
-            visibleGroup.querySelectorAll("input, select, textarea").forEach(field => {
-                field.disabled = false;
+            if (!isReadonlyMode) {
+                visibleGroup.querySelectorAll("input, select, textarea").forEach(field => {
+                    field.disabled = false;
 
-                if (field.dataset.required === "true") {
-                    field.required = true;
-                }
-            });
+                    if (field.dataset.required === "true") {
+                        field.required = true;
+                    }
+                });
+            }
         }
     }
 

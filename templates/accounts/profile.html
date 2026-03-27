@@ -1,8 +1,21 @@
 {% extends 'common/base.html' %}
+
 {% block content %}
     <div class="profile">
+        {% if profile.pk == request.user.pk %}
+            <a class="profile__edit-button" href="{% url 'edit-profile' request.user.pk %}">
+                <i class="bi bi-pencil-fill"></i>
+            </a>
+            <a class="profile__delete-button" href="{% url 'delete-profile' request.user.pk %}">
+                <i class="bi bi-trash"></i>
+            </a>
+        {% endif %}
         <div class="profile__image-container">
-            <img src="{{ object.user.profile.profile_picture }}" alt="test"/>
+            {% if object.profile_picture %}
+                <img src="{{ object.profile_picture.url }}" alt="test"/>
+            {% else %}
+                <i class="bi bi-person-circle"></i>
+            {% endif %}
         </div>
         <div class="profile__data-row">
             <p class="profile__data-row-label">Email: </p>
@@ -16,8 +29,9 @@
             <p class="profile__data-row-label">Name: </p>
             <p class="profile__data-row-value">{{ object.user.profile.first_name }} {{ object.user.profile.last_name }}</p>
         </div>
-        {% if profile.pk == request.user.pk %}
-            <a href="{% url 'edit-profile' request.user.pk %}">Edit</a>
-        {% endif %}
+        <div class="profile__data-row">
+            <p class="profile__data-row-label">Date of birth: </p>
+            <p class="profile__data-row-value">{{ object.user.profile.date_of_birth|date:'d.m.Y' }}</p>
+        </div>
     </div>
 {% endblock %}

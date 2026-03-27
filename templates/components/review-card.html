@@ -5,16 +5,15 @@
         <div class="review-card__delete-button">
             <form method="post" action="{% url 'delete-review' pk=review.pk %}">
                 {% csrf_token %}
-                {% button button_type="submit" icon="bi bi-x-circle" is_small=True color="#ffffff" background_color="#dc3545" %}
+                <button><i class="bi bi-x-circle"></i></button>
             </form>
         </div>
     {% endif %}
     <div class="review-card__header">
         {% if review.user.profile.profile_picture %}
-            <img class="review-card__header-avatar"
-                 src="{{ review.user.profile.profile_picture }}"
-                 alt="profile image"
-            >
+            <img class="review-card__header-avatar" alt="profile image" src="{{ review.user.profile.profile_picture.url }}">
+        {% else %}
+            <i class="bi bi-person-circle"></i>
         {% endif %}
         <div class="review-card__header-data">
             <span class="review-card__header-data-author">

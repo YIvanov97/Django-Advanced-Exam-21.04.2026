@@ -33,8 +33,8 @@ class Profile(models.Model):
         blank=True,
         null=True,
     )
-    profile_picture = models.URLField(
-        max_length=100,
+    profile_picture = models.ImageField(
+        upload_to="profiles/",
         blank=True,
         null=True,
     )

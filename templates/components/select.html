@@ -6,6 +6,7 @@
         id="{{ id }}"
         name="{{ name }}"
         class="form-select{% if errors %} select__invalid{% endif %}"
+        {% if disabled %} disabled {% endif %}
     >
         {% for option_value, option_label in options %}
             <option value="{{ option_value }}" {% if value == option_value %}selected{% endif %}>

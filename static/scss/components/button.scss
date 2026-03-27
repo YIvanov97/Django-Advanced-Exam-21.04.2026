@@ -1,3 +1,5 @@
+@use '../colors';
+
 .button {
   padding: 10px 20px;
   border-radius: 8px;
@@ -20,5 +22,11 @@
 
   &__small {
     padding: 5px 10px;
+  }
+
+  &.disabled {
+    background-color: colors.$lightGray;
+    color: colors.$white;
+    cursor: default;
   }
 }

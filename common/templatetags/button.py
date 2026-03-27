@@ -4,6 +4,7 @@ register = template.Library()
 
 @register.inclusion_tag("components/button.html")
 def button(
+        button_id="",
         icon="",
         label="Button",
         href="",
@@ -18,6 +19,7 @@ def button(
         data_dismiss=""
 ):
     return {
+        "button_id": button_id,
         "icon": icon,
         "label": label,
         "href": href,
