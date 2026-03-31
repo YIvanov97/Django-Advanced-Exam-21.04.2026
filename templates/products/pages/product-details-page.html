@@ -26,14 +26,14 @@
                 <span class="product-details__data-price">{{ product.price }}$</span>
                 {% if user.is_staff %}
                     {% url 'product-edit' product_slug=product.slug as edit_product_page_url %}
-                    {% button href=edit_product_page_url label="Edit product" color="#393939" background_color="#88BDF2" %}
+                    {% button href=edit_product_page_url label="Edit product" color="#FFFFFF" background_color="#5EB0FF" %}
                     {% url 'product-delete' product_slug=product.slug as delete_product_page_url %}
                     {% button href=delete_product_page_url label="Delete product" data_toggle="modal" data_target="#delete-product-modal" is_outline=True color="#D6674B" %}
                 {% else %}
                     {% url 'add-to-cart' product_slug=product.slug as add_to_cart_url %}
                     <form method="post" action="{{ add_to_cart_url }}">
                         {% csrf_token %}
-                        {% button button_type="submit" label="Add to cart" color="#393939" background_color="#88BDF2" %}
+                        {% button button_type="submit" label="Add to cart" color="#FFFFFF" background_color="#5EB0FF" %}
                     </form>
                 {% endif %}
             </div>
@@ -90,4 +90,5 @@
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'js/product-images.js' %}"></script>
+    <script src="{% static 'js/product-details-page.js' %}"></script>
 {% endblock %}

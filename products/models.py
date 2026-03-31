@@ -23,8 +23,9 @@ class Product(models.Model):
             InputFieldValidator(message="Product description contains invalid characters.")
         ]
     )
-    price = models.CharField(
-        max_length=4,
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
         validators=[
             DigitFieldValidator()
         ]
@@ -165,8 +166,3 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     to_product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
-
-# class CartItem(models.Model):
-#     quantity = models.PositiveIntegerField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     to_product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')

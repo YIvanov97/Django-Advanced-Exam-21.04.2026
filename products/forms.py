@@ -199,7 +199,7 @@ class ProductEditForm(ProductBaseForm):
 class ProductDeleteForm(ProductBaseForm):
     pass
 
-class ReviewForm(forms.ModelForm):
+class ReviewCreateForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['content']
@@ -212,4 +212,12 @@ class ReviewForm(forms.ModelForm):
                     'placeholder': 'Enter your review',
                 }
             )
+        }
+
+class ReviewEditForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['content']
+        labels = {
+            'content': 'Edit Review'
         }

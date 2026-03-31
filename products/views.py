@@ -1,12 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from products.constants import CATEGORY_DETAILS_TEMPLATES
-from products.forms import ProductCreateForm, ProductCategoryFilterForm, ProductSearchForm, ReviewForm, \
-    ProductEditForm, ProductDeleteForm
+from products.forms import ProductCreateForm, ProductCategoryFilterForm, ProductSearchForm, ReviewCreateForm, \
+    ProductEditForm, ProductDeleteForm, ReviewEditForm
 from products.mixins import ProductManagementMixin
 from products.models import Product, Review
 from products.utils import get_product_details_forms, handle_product_form_submission
@@ -68,14 +68,14 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.object
-        context["review_form"] = ReviewForm()
+        context["review_form"] = ReviewCreateForm()
         context["details_template"] = CATEGORY_DETAILS_TEMPLATES.get(product.category)
         context["details"] = getattr(product, product.category, None)
         return context
 
     def post(self, request, *args, **kwargs):
         product = self.get_object()
-        form = ReviewForm(request.POST)
+        form = ReviewCreateForm(request.POST)
 
         if form.is_valid():
             review = form.save(commit=False)
@@ -118,8 +118,17 @@ class ProductDeleteView(ProductManagementMixin, DeleteView):
         product.delete()
         return redirect("catalog")
 
+class ReviewEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Review
+    form_class = ReviewEditForm
 
-class DeleteReviewView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+    def get_success_url(self):
+        return reverse("product-details", kwargs={"product_slug": self.object.to_product.slug})
+
+class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
     def test_func(self):
         review = get_object_or_404(Review, pk=self.kwargs["pk"])
         return review.user == self.request.user

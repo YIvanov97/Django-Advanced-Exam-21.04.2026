@@ -1,0 +1,149 @@
+@use "../colors";
+
+.order-details {
+  display: flex;
+  flex-direction: column;
+  background-color: colors.$white;
+  border-radius: 10px;
+  margin: 0 40px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid colors.$lightestBlue;
+
+    &-title {
+      font-size: 32px;
+      font-weight: 400;
+      color: colors.$labelBlack;
+      margin: 0;
+    }
+
+    &-date-label {
+      font-size: 16px;
+      font-weight: 400;
+      color: colors.$labelGray;
+    }
+
+    &-date-value {
+      color: colors.$labelBlack;
+    }
+  }
+
+  &__status {
+    padding: 20px;
+    border-bottom: 2px solid colors.$lightestBlue;
+
+    .order-status {
+      font-size: 16px;
+      font-weight: 400;
+      color: colors.$labelBlack;
+      padding: 3px 8px;
+      height: max-content;
+      border-radius: 10px;
+
+      &--pending {
+        background-color: colors.$lightBlue;
+      }
+
+      &--processing {
+        background-color: colors.$lightYellow;
+      }
+
+      &--delivered {
+        background-color: colors.$lightGreen;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      .select {
+        flex: 1
+      }
+
+      button {
+        margin-top: 7px;
+      }
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+
+    &-product {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+      border-bottom: 1px solid colors.$lightestBlue;
+
+      &:last-of-type {
+        border-bottom: 0;
+      }
+
+      &-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &-data {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+      }
+
+      &-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: colors.$mainBlue;
+      }
+
+      &-quantity {
+        font-size: 14px;
+        font-weight: 400;
+        color: colors.$labelGray;
+      }
+
+      &-price {
+        font-size: 16px;
+        font-weight: 400;
+        color: colors.$labelBlack;
+      }
+    }
+  }
+
+  &__total {
+    display: flex;
+    padding: 20px;
+    border-top: 2px solid colors.$lightestBlue;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    &-label {
+      font-size: 16px;
+      font-weight: 400;
+      color: colors.$labelGray;
+    }
+
+    &-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: colors.$labelBlack;
+    }
+  }
+}

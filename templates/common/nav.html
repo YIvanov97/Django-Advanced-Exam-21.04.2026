@@ -7,24 +7,18 @@
   <li class="navigation__item-container">
     <a class="navigation__item" href="{% url 'catalog' %}">Catalog</a>
   </li>
-    {% if request.user.is_authenticated %}
-        {% if request.user.is_staff %}
-            <li class="navigation__item-container">
-              <a class="navigation__item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
-            </li>
-            <li class="navigation__item-container">
-              <a class="navigation__item" href="{% url 'add-product' %}">Add product</a>
-            </li>
-        {% endif %}
-    {% else %}
-      <li class="navigation__item-container">
-        <a class="navigation__item" href="{% url 'login' %}">Login</a>
-      </li>
-      <li class="navigation__item-container">
-        <a class="navigation__item" href="{% url 'register' %}">Register</a>
-      </li>
+    {% if request.user.is_authenticated and request.user.is_staff %}
+        <li class="navigation__item-container">
+            <a class="navigation__item" href="{% url 'add-product' %}">Add product</a>
+        </li>
     {% endif %}
     {% if not request.user.is_staff %}
+        <li class="navigation__item-container">
+          <a class="navigation__item" href="{% url 'about-page' %}">About</a>
+        </li>
+        <li class="navigation__item-container">
+          <a class="navigation__item" href="{% url 'contact-page' %}">Contact</a>
+        </li>
         <li class="navigation__cart-container">
           <a href="{% url 'cart' %}" class="navigation__cart position-relative">
             <i class="bi bi-cart3 fs-4"></i>
@@ -36,18 +30,28 @@
           </a>
         </li>
     {% endif %}
-    {% if request.user.is_authenticated and not request.user.is_staff %}
-      <li id="profile" class="navigation__profile-container">
-        <div class="navigation__profile">
-          {% if request.user.profile.profile_picture %}
-            <img alt="profile picture" src="{{ request.user.profile.profile_picture.url }}"/>
-          {% else %}
-            <i class="bi bi-person-circle"></i>
-          {% endif %}
-        </div>
-        {% include 'components/profile-dialog.html' with request=request %}
-      </li>
+    {% if request.user.is_staff %}
+        <li class="navigation__orders-container">
+            <a class="navigation__orders position-relative" href="{% url 'orders' %}">
+                <i class="bi bi-box-seam fs-4"></i>
+                {% if pending_orders_count %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                        {{ pending_orders_count }}
+                    </span>
+                {% endif %}
+            </a>
+        </li>
     {% endif %}
+    <li id="profile" class="navigation__profile-container">
+      <div class="navigation__profile">
+        {% if request.user.profile.profile_picture %}
+          <img alt="profile picture" src="{{ request.user.profile.profile_picture.url }}"/>
+        {% else %}
+          <i class="bi bi-person-circle"></i>
+        {% endif %}
+      </div>
+      {% include 'components/profile-dialog.html' with request=request %}
+    </li>
 </ul>
 {% block scripts %}
     <script src="{% static 'js/navigation.js' %}"></script>

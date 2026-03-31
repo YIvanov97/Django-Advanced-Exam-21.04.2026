@@ -1,0 +1,105 @@
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #5EB0FF;
+  border-radius: 10px;
+  max-width: max-content;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  position: relative;
+}
+.review-card__buttons {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  gap: 5px;
+}
+.review-card__buttons-edit, .review-card__buttons-delete button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  height: 21px;
+  width: 21px;
+}
+.review-card__buttons-edit i, .review-card__buttons-delete button i {
+  line-height: 1;
+  margin-top: 1px;
+  color: #FFFFFF;
+}
+.review-card__buttons-edit {
+  background-color: #5EB0FF;
+}
+.review-card__buttons-edit i {
+  font-size: 12px;
+}
+.review-card__buttons-delete button {
+  background-color: #DD3B44;
+}
+.review-card__buttons-delete button i {
+  font-size: 20px;
+}
+.review-card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.review-card__header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.review-card__header i {
+  font-size: 40px;
+  color: #5EB0FF;
+}
+.review-card__header-data {
+  display: flex;
+  flex-direction: column;
+}
+.review-card__header-data-author {
+  font-size: 16px;
+  font-weight: 700;
+  color: #393939;
+}
+.review-card__header-data-date {
+  font-size: 14px;
+  font-weight: 400;
+  color: #707070;
+}
+.review-card__content {
+  font-size: 14px;
+  font-weight: 400;
+  color: #393939;
+  margin: 0;
+}
+.review-card__form {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+}
+.review-card__form button {
+  margin: 7px 0 0 10px;
+}
+.review-card__form-cancel {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #DD3B44;
+  color: #DD3B44;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  background-color: transparent;
+  line-height: 10px;
+  max-height: max-content;
+}
+.review-card__form-cancel:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=review-card.css.map */

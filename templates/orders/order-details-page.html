@@ -1,0 +1,49 @@
+{% extends 'common/base.html' %}
+{% load form_components %}
+{% load button %}
+
+{% block content %}
+    <main class="order-details">
+        <div class="order-details__header">
+            <h1 class="order-details__header-title">Order #{{ order.id }}</h1>
+            <span class="order-details__header-date-label">Placed on: <span class="order-details__header-date-value">{{ order.created_at|date:"d.m.Y" }}</span></span>
+        </div>
+        <div class="order-details__status">
+            {% if request.user.is_staff %}
+                <form method="post" action="{% url 'order-status-update' pk=order.pk %}">
+                    {% csrf_token %}
+                    {% custom_select field_id=order.id name="status" label="Status" value=order.status options=order_status_choices %}
+                    {% button button_type="submit" label="Update" color="#FFFFFF" background_color="#5EB0FF" %}
+                </form>
+            {% else %}
+                <span class="order-status order-status--{{ order.status }}">
+                    {{ order.get_status_display }}
+                </span>
+            {% endif %}
+        </div>
+        <div class="order-details__products">
+            {% for item in order.items.all %}
+                <div class="order-details__products-product">
+                    <div class="order-details__products-product-image">
+                        <img src="{{ item.product.images.first.image.url }}" alt="{{ item.product.name }}"/>
+                    </div>
+                    <div class="order-details__products-product-data">
+                        <span class="order-details__products-product-name">
+                            {{ item.product.name }}
+                        </span>
+                        <span class="order-details__products-product-quantity">
+                            x{{ item.quantity }}
+                        </span>
+                    </div>
+                    <div class="order-details__products-product-price">
+                        {{ item.price }}$
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="order-details__total">
+            <span class="order-details__total-label">Total:</span>
+            <strong class="order-details__total-value">{{ order.total_price }}$</strong>
+        </div>
+    </main>
+{% endblock %}

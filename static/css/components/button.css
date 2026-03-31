@@ -1,0 +1,29 @@
+.button {
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  line-height: 10px;
+  max-height: max-content;
+  text-align: center;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button__outline {
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: transparent;
+}
+.button__small {
+  padding: 10px 20px;
+}
+.button.disabled {
+  background-color: #BDBDBD;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+/*# sourceMappingURL=button.css.map */

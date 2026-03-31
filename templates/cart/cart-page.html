@@ -29,5 +29,13 @@
         {% else %}
             <span class="cart__product-list-empty">Your cart is empty!</span>
         {% endif %}
+        {% if request.user.is_authenticated and cart_products %}
+            <form class="cart__footer" method="post" action="{% url 'checkout' %}">
+                {% csrf_token %}
+                {% button button_type="submit" label="Place order" color="#FFFFFF" background_color="#5EB0FF" %}
+            </form>
+        {% elif not request.user.is_authenticated and cart_items %}
+            <a href="{% url 'login' %}">Log in to place an order</a>
+        {% endif %}
     </div>
 {% endblock %}

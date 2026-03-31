@@ -1,0 +1,9 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <main class="orders">
+        {% for order in orders %}
+            {% include 'components/order-card.html' with order=order %}
+        {% endfor %}
+    </main>
+{% endblock %}

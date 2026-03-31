@@ -11,12 +11,15 @@
   background-color: colors.$white;
   position: relative;
 
-  &__delete-button {
+  &__buttons {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     right: -10px;
     top: -10px;
+    gap: 5px;
 
-    button {
+    &-edit, &-delete button {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,14 +27,28 @@
       border-radius: 50%;
       height: 21px;
       width: 21px;
-      background-color: colors.$mainRed;
+
+      i {
+        line-height: 1;
+        margin-top: 1px;
+        color: colors.$white;
+      }
     }
 
-    i {
-      font-size: 20px;
-      line-height: 1;
-      margin-top: 1px;
-      color: colors.$white;
+    &-edit {
+      background-color: colors.$mainBlue;
+
+      i {
+        font-size: 12px;
+      }
+    }
+
+    &-delete button {
+      background-color: colors.$mainRed;
+
+      i {
+        font-size: 20px;
+      }
     }
   }
 
@@ -75,5 +92,32 @@
     font-weight: 400;
     color: colors.$labelBlack;
     margin: 0
+  }
+
+  &__form {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+
+    button {
+      margin: 7px 0 0 10px;
+    }
+
+    &-cancel {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid colors.$mainRed;
+      color: colors.$mainRed;
+      font-size: 16px;
+      font-weight: 400;
+      text-decoration: none;
+      background-color: transparent;
+      line-height: 10px;
+      max-height: max-content;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

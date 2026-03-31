@@ -1,0 +1,9 @@
+.orders {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 0 40px;
+}
+
+/*# sourceMappingURL=orders.css.map */

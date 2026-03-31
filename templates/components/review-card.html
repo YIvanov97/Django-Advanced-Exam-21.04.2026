@@ -1,9 +1,13 @@
 {% load button %}
+{% load form_components %}
 
 <div class="review-card">
     {% if user == review.user %}
-        <div class="review-card__delete-button">
-            <form method="post" action="{% url 'delete-review' pk=review.pk %}">
+        <div class="review-card__buttons">
+            {% if request.user == review.user %}
+                <button data-review-id="{{ review.pk }}"  class="review-card__buttons-edit edit-review-button"><i class="bi bi-pencil-fill"></i></button>
+            {% endif %}
+            <form class="review-card__buttons-delete" method="post" action="{% url 'review-delete' pk=review.pk %}">
                 {% csrf_token %}
                 <button><i class="bi bi-x-circle"></i></button>
             </form>
@@ -20,11 +24,19 @@
                 {{ review.user.username }}
             </span>
             <span class="review-card__header-data-date">
-                {{ review.created_at|date:"d M Y H:i" }}
+                {{ review.created_at|date:"d.m.Y" }}
             </span>
         </div>
     </div>
-    <p class="review-card__content">
+    <p id="review-content-{{ review.pk }}" class="review-card__content">
         {{ review.content }}
     </p>
+    <form id="edit-review-form-{{ review.pk }}" class="review-card__form" method="post" action="{% url 'review-edit' pk=review.pk %}">
+        {% csrf_token %}
+        {% with review_id=review.pk|stringformat:"s" %}
+        {% custom_input input_type="text" field_id="review-"|add:review_id name="content" label="Edit review" value=review.content placeholder="Enter your review" %}
+        {% endwith %}
+        {% button button_type="submit" label="Edit" color="#393939" background_color="#88BDF2" %}
+        <button type="button" class="review-card__form-cancel cancel-edit-review-button" data-review-id="{{ review.pk }}">Cancel</button>
+    </form>
 </div>

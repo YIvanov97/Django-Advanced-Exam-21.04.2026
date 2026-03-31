@@ -1,0 +1,17 @@
+.delete-profile-form {
+  display: flex;
+  flex-direction: column;
+  margin: 60px;
+}
+.delete-profile-form__title {
+  font-size: 32px;
+  color: #393939;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.delete-profile-form button {
+  align-self: center;
+}
+
+/*# sourceMappingURL=delete-profile-page.css.map */

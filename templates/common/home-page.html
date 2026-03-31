@@ -14,8 +14,9 @@
                 </p>
                 <div class="heading__buttons-container">
                     {% url 'catalog' as catalog_url %}
-                    {% button href=catalog_url label="Browse Products" is_outline=False color="#000000" background_color="#BDDDFC" %}
-                    {% button label="About Us" is_outline=True color="#BDDDFC" %}
+                    {% button href=catalog_url label="Browse Products" is_outline=False color="#FFFFFF" background_color="#5EB0FF" %}
+                    {% url 'about-page' as about_page_url %}
+                    {% button href=about_page_url label="About Us" is_outline=True color="#5EB0FF" %}
                 </div>
             </div>
         </section>

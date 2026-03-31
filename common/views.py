@@ -2,8 +2,6 @@ from django.views.generic import TemplateView
 
 from products.choices.category_choices import CategoryChoices
 from products.models import Product
-
-
 class HomePageView(TemplateView):
     template_name = 'common/home-page.html'
 
@@ -37,5 +35,8 @@ class HomePageView(TemplateView):
         context["featured_products"] = featured_products
 
         return context
+class AboutPageView(TemplateView):
+    template_name = 'common/about-page.html'
 
-
+class ContactPageView(TemplateView):
+    template_name = "common/contact-page.html"

@@ -3,7 +3,7 @@
        id="{{ button_id }}"
        href="{{ href }}"
        class="button {% if is_outline %} button__outline {% else %} button__filled {% endif %} {% if is_small %} button__small {% endif %}"
-       style="color: {{ color }}; {% if is_outline %} border-color: {{ color }}; {% else %} background-color: {{ background_color }}; {% endif %}"
+       {% if not is_disabled %}style="color: {{ color }};{% if is_outline %}border-color: {{ color }};{% else %}background-color: {{ background_color }};{% endif %}"{% endif %}
     >
         {% if icon != "" %}
              <i class="{{ icon }}"></i>

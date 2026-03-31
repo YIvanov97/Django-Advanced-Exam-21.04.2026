@@ -1,0 +1,31 @@
+.modal-content {
+  padding: 20px;
+}
+.modal__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.modal__header-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #393939;
+  margin: 0;
+}
+.modal__header-close {
+  align-self: flex-start;
+  padding: 7px 0;
+}
+.modal__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #393939;
+}
+.modal__actions {
+  display: flex;
+  gap: 20px;
+}
+
+/*# sourceMappingURL=modal.css.map */

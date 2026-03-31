@@ -1,0 +1,27 @@
+{% load form_components %}
+{% load button %}
+
+<div class="order">
+    <div class="order__header">
+        <div class="order__header-data">
+            <span class="order__header-data-title">Order #{{ order.id }}</span>
+            <span class="order__header-data-subtitle">{{ order.created_at|date:'d.m.Y' }}</span>
+        </div>
+        <span class="order__header-status order__header-status--{{ order.status }}">
+            {{ order.get_status_display }}
+        </span>
+    </div>
+    <div class="order__body">
+        <span class="order__body-items-count">Items: {{ order.items.count }}</span>
+        <div class="order__body-items">
+            {% for item in order.items.all %}
+                <span>{{ item.product.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="order__footer">
+        <span class="order__footer-total-price">Total: {{ order.total_price }}$</span>
+        {% url 'order-details' pk=order.pk as order_details_url %}
+        {% button href=order_details_url button_type="button" label="Details" color="#FFFFFF" background_color="#5EB0FF" %}
+    </div>
+</div>

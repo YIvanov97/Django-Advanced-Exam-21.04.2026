@@ -1,0 +1,42 @@
+.contact-page {
+  margin: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.contact-page__title {
+  font-size: 52px;
+  color: #393939;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+.contact-page__section {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 6px;
+}
+.contact-page__section-title {
+  font-size: 26px;
+  color: #384959;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.contact-page__section-title i {
+  line-height: 1;
+  color: #5EB0FF;
+}
+.contact-page__section-paragraph {
+  font-size: 16px;
+  color: #384959;
+  font-weight: 400;
+}
+.contact-page__section-link {
+  font-size: 16px;
+  color: #5EB0FF;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=contact-page.css.map */

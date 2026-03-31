@@ -1,0 +1,44 @@
+.category-card {
+  position: relative;
+  height: 500px;
+  min-width: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: flex-end;
+  filter: grayscale(100%);
+  opacity: 0.9;
+  padding: 0;
+}
+.category-card__fade {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #000000, transparent 70%);
+}
+.category-card__label {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-size: 62px;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 0;
+  z-index: 1;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.active {
+  filter: grayscale(0);
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+.active:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/*# sourceMappingURL=category-card.css.map */

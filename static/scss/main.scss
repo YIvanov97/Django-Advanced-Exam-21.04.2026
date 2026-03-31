@@ -3,6 +3,8 @@
 // Common
 @use "common/nav";
 @use "common/home-page";
+@use "common/about-page";
+@use "common/contact-page";
 
 // Accounts
 @use "accounts/profile-page";
@@ -17,6 +19,10 @@
 // Cart
 @use "cart/cart";
 
+// Orders
+@use "orders/orders";
+@use "orders/order-details-page";
+
 //Components
 @use "components/button";
 @use "components/checkbox";
@@ -29,6 +35,7 @@
 @use "components/product-card";
 @use "components/review-card";
 @use "components/cart-product-card";
+@use "components/order-card";
 
 body {
   margin: 0;

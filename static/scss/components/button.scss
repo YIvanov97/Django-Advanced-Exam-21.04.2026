@@ -1,14 +1,15 @@
 @use '../colors';
 
 .button {
-  padding: 10px 20px;
+  padding: 14px 24px;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 600;
   text-decoration: none;
   border: none;
   line-height: 10px;
   max-height: max-content;
+  text-align: center;
 
   &:hover {
     cursor: pointer;
@@ -21,7 +22,7 @@
   }
 
   &__small {
-    padding: 5px 10px;
+    padding: 10px 20px;
   }
 
   &.disabled {

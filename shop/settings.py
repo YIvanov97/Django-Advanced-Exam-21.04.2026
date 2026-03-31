@@ -35,9 +35,9 @@ ALLOWED_HOSTS = []
 PROJECT_APPS = [
     'common',
     'accounts',
-    'orders',
     'products',
-    'cart'
+    'cart',
+    'orders'
 ]
 
 INSTALLED_APPS = [
@@ -85,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart_items_count',
+                'orders.context_processors.pending_orders_count',
             ],
         },
     },
