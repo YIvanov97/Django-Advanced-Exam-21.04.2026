@@ -1,9 +1,27 @@
 .orders {
   display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+.orders__title {
+  font-size: 52px;
+  font-weight: 400;
+  color: #393939;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.orders__list {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 40px;
-  margin: 0 40px;
+}
+.orders__list-empty-message {
+  font-size: 24px;
+  font-weight: 700;
+  color: #393939;
+  text-align: center;
+  flex: 1;
 }
 
 /*# sourceMappingURL=orders.css.map */

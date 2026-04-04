@@ -1,17 +1,15 @@
 {% load button %}
 {% load form_components %}
+{% load modal %}
 
 <div class="review-card">
     {% if user == review.user %}
         <div class="review-card__buttons">
-            {% if request.user == review.user %}
-                <button data-review-id="{{ review.pk }}"  class="review-card__buttons-edit edit-review-button"><i class="bi bi-pencil-fill"></i></button>
-            {% endif %}
-            <form class="review-card__buttons-delete" method="post" action="{% url 'review-delete' pk=review.pk %}">
-                {% csrf_token %}
-                <button><i class="bi bi-x-circle"></i></button>
-            </form>
+            <button data-review-id="{{ review.pk }}"  class="review-card__buttons-edit edit-review-button"><i class="bi bi-pencil-fill"></i></button>
+            <button class="review-card__buttons-delete" data-bs-toggle="modal" data-bs-target="#{{ review.id }}"><i class="bi bi-x-circle"></i></button>
         </div>
+        {% url 'review-delete' pk=review.pk as review_delete_url %}
+        {% modal modal_id=review.id title="Delete review" subtitle="Are you sure you want to delete this review ?" action=review_delete_url confirm_label="Delete" confirm_button_color="#DD3B44" cancel_label="Cancel" %}
     {% endif %}
     <div class="review-card__header">
         {% if review.user.profile.profile_picture %}

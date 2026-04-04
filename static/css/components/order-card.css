@@ -5,6 +5,30 @@
   max-width: 300px;
   width: 100%;
   background-color: #FFFFFF;
+  position: relative;
+}
+.order__edit-button, .order__delete-button {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  padding: 5px;
+  background-color: #5EB0FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.order__edit-button i, .order__delete-button i {
+  font-size: 14px;
+  line-height: 1;
+  color: #FFFFFF;
+}
+.order__edit-button:hover, .order__delete-button:hover {
+  cursor: pointer;
+}
+.order__delete-button {
+  right: -12px;
+  background-color: #DD3B44;
 }
 .order__header {
   display: flex;

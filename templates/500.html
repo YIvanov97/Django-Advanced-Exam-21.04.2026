@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+{% load button %}
+
+{% block content %}
+    <main class="server-error-page">
+        <h1 class="server-error-page__title">500 Something went wrong</h1>
+        <i class="server-error-page__icon bi bi-exclamation-triangle-fill"></i>
+        <p class="server-error-page__text">
+            An unexpected error occurred. Please try again later.
+        </p>
+        {% url 'home-page' as home_page_url %}
+        {% button href=home_page_url button_type="button" label="Go to home" color="#FFFFFF" background_color="#5EB0FF" %}
+    </main>
+{% endblock %}

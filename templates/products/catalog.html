@@ -7,11 +7,11 @@
     <div class="catalog">
         <div class="catalog__filters">
             <form class="catalog__filters-category-filter">
-                {% custom_select field_id="category" label="Category" name="category" options=category_filter_form.category.field.choices value=request.GET.category %}
+                {% custom_select field_id="category" label="Category" name="category" options=category_filter_form.category.field.choices value=request.GET.category is_required=False %}
                 {% button button_type="submit" label="Filter" color="#FFFFFF" background_color="#5EB0FF" %}
             </form>
             <form class="catalog__filters-search-filter">
-                {% custom_input field_id="search" label="Search" name="search" input_type="text" placeholder="Enter product name" %}
+                {% custom_input field_id="search" label="Search" name="search" input_type="text" placeholder="Enter product name" is_required=False %}
                 {% button button_type="submit" label="Search" color="#FFFFFF" background_color="#5EB0FF" %}
             </form>
         </div>

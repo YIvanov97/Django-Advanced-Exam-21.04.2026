@@ -1,0 +1,8 @@
+{% extends 'common/base.html' %}
+{% load cart_product_card %}
+{% load form_components %}
+{% load button %}
+
+{% block content %}
+    {% include "orders/forms/order-form.html" with form=form title="Checkout" button_label="Finish order" button_background_color="#5EB0FF" is_disabled=False total_price=total_price cart_items=cart_items %}
+{% endblock %}

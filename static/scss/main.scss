@@ -7,6 +7,7 @@
 @use "common/contact-page";
 
 // Accounts
+@use "accounts/authentication";
 @use "accounts/profile-page";
 @use "accounts/edit-profile-page";
 @use "accounts/delete-profile-page";
@@ -17,9 +18,10 @@
 @use "products/product-details-page";
 
 // Cart
-@use "cart/cart";
+@use "cart/cart-page";
 
 // Orders
+@use "orders/create-order-page";
 @use "orders/orders";
 @use "orders/order-details-page";
 
@@ -36,6 +38,9 @@
 @use "components/review-card";
 @use "components/cart-product-card";
 @use "components/order-card";
+
+// Error pages
+@use "error-page";
 
 body {
   margin: 0;

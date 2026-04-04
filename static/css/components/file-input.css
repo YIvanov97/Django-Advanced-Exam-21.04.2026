@@ -4,5 +4,10 @@
   font-weight: 400;
   margin-bottom: 0;
 }
+.file-input__label-required {
+  font-size: 16px;
+  color: #DD3B44;
+  font-weight: 400;
+}
 
 /*# sourceMappingURL=file-input.css.map */

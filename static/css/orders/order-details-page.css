@@ -102,6 +102,31 @@
   font-weight: 400;
   color: #393939;
 }
+.order-details__user-data {
+  padding: 20px;
+  border-top: 2px solid #E6F3FF;
+  display: flex;
+  flex-direction: column;
+}
+.order-details__user-data-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #393939;
+  margin-bottom: 20px;
+}
+.order-details__user-data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.order-details__user-data-list .user-data-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.order-details__user-data-list .user-data-row .user-data-row-label {
+  color: #707070;
+}
 .order-details__total {
   display: flex;
   padding: 20px;

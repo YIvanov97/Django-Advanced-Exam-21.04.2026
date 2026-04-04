@@ -6,5 +6,11 @@
     color: colors.$labelBlack;
     font-weight: 400;
     margin-bottom: 0;
+
+    &-required {
+      font-size: 16px;
+      color: colors.$mainRed;
+      font-weight: 400;
+    }
   }
 }

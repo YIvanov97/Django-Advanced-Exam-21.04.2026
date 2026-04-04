@@ -1,0 +1,5 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    {% include "orders/forms/order-form.html" with form=form title="Edit order" button_label="Save changes" button_background_color="#5EB0FF" is_disabled=False total_price=object.total_price order_items=order_items %}
+{% endblock %}

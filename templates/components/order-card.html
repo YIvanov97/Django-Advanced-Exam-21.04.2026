@@ -2,6 +2,14 @@
 {% load button %}
 
 <div class="order">
+    {% if order.status == 'pending' and not request.user.is_staff %}
+        <a class="order__edit-button" href="{% url 'order-edit' order.pk %}">
+            <i class="bi bi-pencil-fill"></i>
+        </a>
+        <a class="order__delete-button" href="{% url 'order-delete' order.pk %}">
+            <i class="bi bi-trash"></i>
+        </a>
+    {% endif %}
     <div class="order__header">
         <div class="order__header-data">
             <span class="order__header-data-title">Order #{{ order.id }}</span>

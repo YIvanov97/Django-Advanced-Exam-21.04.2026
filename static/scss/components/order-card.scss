@@ -7,6 +7,34 @@
   max-width: 300px;
   width: 100%;
   background-color: colors.$white;
+  position: relative;
+
+  &__edit-button, &__delete-button {
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    padding: 5px;
+    background-color: colors.$mainBlue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    i {
+      font-size: 14px;
+      line-height: 1;
+      color: colors.$white;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__delete-button {
+    right: -12px;
+    background-color: colors.$mainRed;
+  }
 
   &__header {
     display: flex;

@@ -125,6 +125,36 @@
     }
   }
 
+  &__user-data {
+    padding: 20px;
+    border-top: 2px solid colors.$lightestBlue;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      font-size: 28px;
+      font-weight: 400;
+      color: colors.$labelBlack;
+      margin-bottom: 20px;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .user-data-row {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .user-data-row-label {
+          color: colors.$labelGray;
+        }
+      }
+    }
+  }
+
   &__total {
     display: flex;
     padding: 20px;

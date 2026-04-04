@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 420px;
 }
 .product-details #main-image {
   width: 100%;

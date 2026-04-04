@@ -1,7 +1,30 @@
+@use "../colors";
+
 .orders {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin: 0 40px;
+  flex-direction: column;
+  margin: 40px;
+
+  &__title {
+    font-size: 52px;
+    font-weight: 400;
+    color: colors.$labelBlack;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    &-empty-message {
+      font-size: 24px;
+      font-weight: 700;
+      color: colors.$labelBlack;
+      text-align: center;
+      flex: 1;
+    }
+  }
 }

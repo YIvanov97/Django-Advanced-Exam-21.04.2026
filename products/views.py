@@ -74,15 +74,15 @@ class ProductDetailView(DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
-        product = self.get_object()
+        self.object = self.get_object()
         form = ReviewCreateForm(request.POST)
 
         if form.is_valid():
             review = form.save(commit=False)
-            review.to_product = product
+            review.to_product = self.object
             review.user = request.user
             review.save()
-            return redirect('product-details', product_slug=product.slug)
+            return redirect('product-details', product_slug=self.object.slug)
 
         context = self.get_context_data(review_form=form)
         return self.render_to_response(context)

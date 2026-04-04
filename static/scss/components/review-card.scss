@@ -19,7 +19,7 @@
     top: -10px;
     gap: 5px;
 
-    &-edit, &-delete button {
+    &-edit, &-delete {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -43,13 +43,17 @@
       }
     }
 
-    &-delete button {
+    &-delete {
       background-color: colors.$mainRed;
 
       i {
         font-size: 20px;
       }
     }
+  }
+
+  #modal-confirm-button {
+    color: colors.$mainRed
   }
 
   &__header {

@@ -111,19 +111,19 @@
         background-color: colors.$lightestBlue;
       }
 
-      &:only-child {
+      &:only-of-type {
         border-radius: 10px;
       }
 
-      &:first-child:not(:only-child) {
+      &:first-of-type:not(:only-of-type) {
         border-radius: 10px 10px 0 0;
       }
 
-      &:last-child:not(:only-child) {
+      &:last-of-type:not(:only-of-type) {
         border-radius: 0 0 10px 10px;
       }
 
-      &:not(:last-child) {
+      &:not(:last-of-type) {
         border-bottom: 1px solid colors.$lightBlue;
       }
 

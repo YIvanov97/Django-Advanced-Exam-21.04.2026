@@ -1,0 +1,38 @@
+@use '../colors';
+
+.login, .register {
+  margin: 40px;
+
+  &__title {
+    font-size: 32px;
+    color: colors.$labelBlack;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    justify-self: center;
+
+    &-error {
+      font-size: 14px;
+      font-weight: 400;
+      color: colors.$mainRed;
+      text-align: center;
+    }
+
+    button {
+      align-self: center;
+      justify-self: center;
+    }
+  }
+
+  &__link {
+    margin-top: 10px;
+    align-self: center;
+  }
+}

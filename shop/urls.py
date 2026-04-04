@@ -25,13 +25,14 @@ urlpatterns = [
     path('', include('common.urls')),
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
+    path("api/", include("products.api.urls")),
     path('cart/', include('cart.urls')),
     path("orders/", include("orders.urls")),
+    path("api/", include("orders.api.urls")),
     path('api/shcema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -41,6 +41,35 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="order-details__user-data">
+            <h2 class="order-details__user-data-title">Personal data</h2>
+            <div class="order-details__user-data-list">
+                <div class="user-data-row">
+                    <span class="user-data-row-label">Name:</span>
+                    <span class="user-data-row-value">{{ order.user.profile.first_name }} {{ order.user.profile.last_name }}</span>
+                </div>
+                <div class="user-data-row">
+                    <span class="user-data-row-label">Email:</span>
+                    <span class="user-data-row-value">{{ order.user.email }}</span>
+                </div>
+                <div class="user-data-row">
+                    <span class="user-data-row-label">Username:</span>
+                    <span class="user-data-row-value">{{ order.user.username }}</span>
+                </div>
+                <div class="user-data-row">
+                    <span class="user-data-row-label">Address:</span>
+                    <span class="user-data-row-value">{{ order.address}}</span>
+                </div>
+                <div class="user-data-row">
+                    <span class="user-data-row-label">City:</span>
+                    <span class="user-data-row-value">{{ order.city }}</span>
+                </div>
+                <div class="user-data-row">
+                    <span class="user-data-row-label">Phone number:</span>
+                    <span class="user-data-row-value">{{ order.phone_number }}</span>
+                </div>
+            </div>
+        </div>
         <div class="order-details__total">
             <span class="order-details__total-label">Total:</span>
             <strong class="order-details__total-value">{{ order.total_price }}$</strong>

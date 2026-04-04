@@ -1,0 +1,5 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    {% include "orders/forms/order-form.html" with form=form title="Delete order" button_label="Delete order" button_background_color="#DD3B44" is_disabled=True total_price=object.total_price order_items=order_items %}
+{% endblock %}

@@ -57,7 +57,15 @@
   &__footer {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    flex-direction: column;
     margin-top: 20px;
+    align-items: flex-end;
+
+    &-price {
+      display: flex;
+      justify-self: flex-end;
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 }

@@ -1,11 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from products.choices.category_choices import CategoryChoices
 from products.choices.ram_choices import RamChoices
 from products.choices.screen_size_choices import ScreenSizeChoices
 from products.choices.storage_choices import StorageChoices
-from products.validators import InputFieldValidator, DigitFieldValidator
+from common.validators import InputFieldValidator, DigitFieldValidator
 from django.utils.text import slugify
 
 UserModel = get_user_model()
@@ -26,22 +27,20 @@ class Product(models.Model):
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
-        validators=[
-            DigitFieldValidator()
-        ]
+        validators=[MinValueValidator(0)]
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(choices=CategoryChoices)
+    category = models.CharField(
+        max_length=20,
+        choices=CategoryChoices
+    )
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-
         if not self.slug:
             self.slug = slugify(f"{self.name}-{self.pk}")
             super().save(*args, **kwargs)
-
-        super().save(*args, **kwargs)
 
 class ProductImage(models.Model):
     product = models.ForeignKey(

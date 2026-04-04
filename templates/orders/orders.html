@@ -2,8 +2,13 @@
 
 {% block content %}
     <main class="orders">
-        {% for order in orders %}
-            {% include 'components/order-card.html' with order=order %}
-        {% endfor %}
+        <h1 class="orders__title">Orders</h1>
+        <div class="orders__list">
+            {% for order in orders %}
+                {% include 'components/order-card.html' with order=order %}
+            {% empty %}
+                <span class="orders__list-empty-message">You haven’t placed any orders yet.</span>
+            {% endfor %}
+        </div>
     </main>
 {% endblock %}

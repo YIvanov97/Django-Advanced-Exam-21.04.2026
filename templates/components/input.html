@@ -1,6 +1,9 @@
 <div class="input mb-3">
     <label for="{{ id }}" class="input__label form-label">
         {{ label }}
+        {% if is_required %}
+            <span class="input__label-required">*</span>
+        {% endif %}
     </label>
     <input
         id="{{ id }}"

@@ -1,6 +1,9 @@
 <div class="file-input mb-3">
     <label for="{{ id }}" class="file-input__label form-label">
         {{ label }}
+        {% if is_required %}
+            <span class="file-input__label-required">*</span>
+        {% endif %}
     </label>
     <input
         id="{{ id }}"

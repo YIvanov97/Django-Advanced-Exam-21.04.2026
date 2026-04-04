@@ -6,12 +6,13 @@ from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
-from accounts.forms import RegisterForm, ProfileEditForm, UserDeleteForm, ProfileDeleteForm
+from accounts.forms import RegisterForm, ProfileEditForm, UserDeleteForm, ProfileDeleteForm, LoginForm
 from accounts.models import Profile, AppUser
 from cart.utils import merge_session_cart_into_user_cart
 
 
 class AppLoginView(LoginView):
+    form_class = LoginForm
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
 
@@ -27,7 +28,7 @@ class RegisterView(CreateView):
 
 class ProfileView(LoginRequiredMixin, DetailView):
     model = Profile
-    template_name = 'accounts/profile.html'
+    template_name = 'accounts/profile-page.html'
 
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile

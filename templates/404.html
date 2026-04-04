@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+{% load button %}
+
+{% block content %}
+    <main class="not-found-page">
+        <h1 class="not-found-page__title">404 Page not found</h1>
+        <i class="not-found-page__icon bi bi-emoji-frown-fill"></i>
+        <p class="not-found-page__text">
+            The page you are looking for does not exist or may have been moved.
+        </p>
+        {% url 'home-page' as home_page_url %}
+        {% button href=home_page_url button_type="button" label="Go to home" color="#FFFFFF" background_color="#5EB0FF" %}
+    </main>
+{% endblock %}

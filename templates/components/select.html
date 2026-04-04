@@ -1,6 +1,9 @@
 <div class="select mb-3">
     <label for="{{ id }}" class="select__label form-label">
         {{ label }}
+        {% if is_required %}
+            <span class="select__label-required">*</span>
+        {% endif %}
     </label>
     <select
         id="{{ id }}"

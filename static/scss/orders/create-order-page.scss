@@ -1,0 +1,61 @@
+@use "../colors";
+
+.checkout {
+  margin: 60px;
+
+  &__title {
+    font-size: 32px;
+    color: colors.$labelBlack;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 28px;
+    color: colors.$labelBlack;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  &__products {
+    padding: 20px;
+    background-color: colors.$white;
+    width: 100%;
+    margin-bottom: 20px;
+
+    &-header {
+      display: grid;
+      grid-template-columns: 2fr 120px 120px 80px;
+      column-gap: 20px;
+      padding: 10px 20px;
+      border-bottom: 1px solid colors.$lightestBlue;
+
+      &-label {
+        font-size: 14px;
+        font-weight: 400;
+        color: colors.$labelGray;
+        text-align: left;
+
+        &:nth-child(2), &:nth-child(3) {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__form {
+    &-price {
+      display: flex;
+      justify-self: flex-end;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  button {
+    display: flex;
+    justify-self: flex-end;
+    margin-top: 20px;
+  }
+}

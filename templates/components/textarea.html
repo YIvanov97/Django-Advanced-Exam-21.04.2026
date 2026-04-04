@@ -1,6 +1,9 @@
 <div class="textarea mb-3">
     <label for="{{ id }}" class="textarea__label form-label">
         {{ label }}
+        {% if is_required %}
+            <span class="textarea__label-required">*</span>
+        {% endif %}
     </label>
     <textarea
         id="{{ id }}"

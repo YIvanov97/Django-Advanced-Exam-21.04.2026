@@ -7,5 +7,4 @@ urlpatterns = [
         path('remove/', views.RemoveFromCartView.as_view(), name='remove-from-cart'),
     ])),
     path('remove-all/', views.RemoveAllFromCartView.as_view(), name='remove-all-from-cart'),
-    path("checkout/", views.CheckoutView.as_view(), name="checkout"),
 ]

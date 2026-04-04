@@ -1,14 +1,17 @@
 {% extends 'common/base.html' %}
 {% load form_components %}
+{% load button %}
 
 {% block content %}
-    <h1>Register</h1>
-    <form method="post">
-        {% csrf_token %}
-        {% custom_input input_type="email" field_id=form.email.id_for_label name=form.email.html_name label=form.email.label placeholder="Enter your email" errors=form.email.errors %}
-        {% custom_input input_type="text" field_id=form.username.id_for_label name=form.username.html_name label=form.username.label placeholder="Enter your username" errors=form.username.errors %}
-        {% custom_input input_type="password" field_id=form.password1.id_for_label name=form.password1.html_name label=form.password1.label placeholder="Enter your password" errors=form.password1.errors %}
-        {% custom_input input_type="password" field_id=form.password2.id_for_label name=form.password2.html_name label=form.password2.label placeholder="Enter your password again" errors=form.password2.errors %}
-        <button>Register</button>
-    </form>
+    <main class="register">
+        <h1 class="register__title">Register</h1>
+        <form class="register__form" method="post">
+            {% csrf_token %}
+            {% custom_input input_type="email" field_id=form.email.id_for_label name=form.email.html_name label=form.email.label placeholder="Enter your email" errors=form.email.errors %}
+            {% custom_input input_type="text" field_id=form.username.id_for_label name=form.username.html_name label=form.username.label placeholder="Enter your username" errors=form.username.errors %}
+            {% custom_input input_type="password" field_id=form.password1.id_for_label name=form.password1.html_name label=form.password1.label placeholder="Enter your password" errors=form.password1.errors %}
+            {% custom_input input_type="password" field_id=form.password2.id_for_label name=form.password2.html_name label=form.password2.label placeholder="Enter your password again" errors=form.password2.errors %}
+            {% button button_type="submit" label="Register" is_outline=False color="#FFFFFF" background_color="#5EB0FF" %}
+        </form>
+    </main>
 {% endblock %}

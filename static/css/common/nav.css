@@ -95,16 +95,16 @@
 .navigation__profile-dialog-row:hover {
   background-color: #E6F3FF;
 }
-.navigation__profile-dialog-row:only-child {
+.navigation__profile-dialog-row:only-of-type {
   border-radius: 10px;
 }
-.navigation__profile-dialog-row:first-child:not(:only-child) {
+.navigation__profile-dialog-row:first-of-type:not(:only-of-type) {
   border-radius: 10px 10px 0 0;
 }
-.navigation__profile-dialog-row:last-child:not(:only-child) {
+.navigation__profile-dialog-row:last-of-type:not(:only-of-type) {
   border-radius: 0 0 10px 10px;
 }
-.navigation__profile-dialog-row:not(:last-child) {
+.navigation__profile-dialog-row:not(:last-of-type) {
   border-bottom: 1px solid #BDDDFC;
 }
 .navigation__profile-dialog-row i {

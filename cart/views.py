@@ -1,12 +1,10 @@
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView
 
 from cart.utils import get_cart
-from cart.models import CartItem, Cart
-from orders.models import Order, OrderItem
+from cart.models import CartItem
 from products.models import Product
 
 
@@ -32,6 +30,8 @@ class CartView(TemplateView):
                 })
 
             context["cart_products"] = session_products
+
+        context["total_price"] = sum(item.product.price * item.quantity for item in context["cart_products"])
 
         return context
 
@@ -92,29 +92,3 @@ class RemoveAllFromCartView(View):
             request.session.modified = True
 
         return redirect("cart")
-
-class CheckoutView(LoginRequiredMixin, View):
-    def post(self, request, *args, **kwargs):
-        cart = Cart.objects.get(user=request.user)
-        cart_items = cart.items.select_related("product").all()
-
-        order_total_price = sum(item.product.price * item.quantity for item in cart_items)
-
-        order = Order.objects.create(
-            user=request.user,
-            total_price=order_total_price
-        )
-
-        order_item = [
-            OrderItem(
-                order=order,
-                product=item.product,
-                price=item.product.price,
-                quantity=item.quantity
-            )
-            for item in cart_items
-        ]
-
-        OrderItem.objects.bulk_create(order_item)
-        cart_items.delete()
-        return redirect('order-details', pk=order.pk)

@@ -1,0 +1,36 @@
+{% load cart_product_card %}
+{% load form_components %}
+{% load button %}
+
+<main class="checkout">
+    <h1 class="checkout__title">{{ title }}</h1>
+    <h2 class="checkout__subtitle">Products</h2>
+    <div class="checkout__products">
+        <div class="checkout__products-header">
+            <span class="checkout__products-header-label">Product</span>
+            <span class="checkout__products-header-label">Quantity</span>
+            <span class="checkout__products-header-label">Price</span>
+            <span class="checkout__products-header-label"></span>
+        </div>
+        {% if cart_items %}
+            {% for item in cart_items %}
+                {% cart_product_card image=item.product.images.first.image.url name=item.product.name price=item.product.price quantity=item.quantity slug=item.product.slug is_cart_view=False %}
+            {% endfor %}
+        {% elif order_items %}
+            {% for item in order_items %}
+                {% cart_product_card image=item.product.images.first.image.url name=item.product.name price=item.price quantity=item.quantity slug=item.product.slug is_cart_view=False %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <h2 class="checkout__subtitle">Personal data</h2>
+    <form method="post" class="checkout__form">
+        {% csrf_token %}
+        {% custom_input field_id=form.first_name.id_for_label name=form.first_name.html_name label=form.first_name.label value=form.first_name.value placeholder="Enter first name" errors=form.first_name.errors disabled=is_disabled %}
+        {% custom_input field_id=form.last_name.id_for_label name=form.last_name.html_name label=form.last_name.label value=form.last_name.value placeholder="Enter last name" errors=form.last_name.errors disabled=is_disabled %}
+        {% custom_input field_id=form.address.id_for_label name=form.address.html_name label=form.address.label value=form.address.value placeholder="Enter address" errors=form.address.errors disabled=is_disabled %}
+        {% custom_input field_id=form.city.id_for_label name=form.city.html_name label=form.city.label value=form.city.value placeholder="Enter city" errors=form.city.errors disabled=is_disabled %}
+        {% custom_input field_id=form.phone_number.id_for_label name=form.phone_number.html_name label=form.phone_number.label value=form.phone_number.value placeholder="Enter phone number" errors=form.phone_number.errors disabled=is_disabled %}
+        <p class="checkout__form-price">Total: {{ total_price }}$</p>
+        {% button button_type="submit" label=button_label color="#FFFFFF" background_color=button_background_color %}
+    </form>
+</main>
