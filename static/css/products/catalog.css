@@ -1,4 +1,5 @@
 .catalog {
+  flex: 1;
   margin: 0 40px;
 }
 .catalog__filters {
@@ -22,6 +23,11 @@
 }
 .catalog__filters-category-filter button, .catalog__filters-search-filter button {
   margin-top: 7px;
+}
+.catalog__filters-clear-filters {
+  display: flex;
+  min-width: max-content;
+  margin-top: 23px;
 }
 .catalog__list {
   display: flex;

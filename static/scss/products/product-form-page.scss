@@ -1,7 +1,8 @@
 @use "../colors";
 
 .product-form {
-  margin: 60px;
+  margin: 0 40px;
+  flex: 1;
 
   &__title {
     font-size: 32px;

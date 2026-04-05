@@ -1,4 +1,5 @@
 .catalog {
+  flex: 1;
   margin: 0 40px;
 
   &__filters {
@@ -25,6 +26,12 @@
     &-category-filter button,
     &-search-filter button {
       margin-top: 7px;
+    }
+
+    &-clear-filters {
+      display: flex;
+      min-width: max-content;
+      margin-top: 23px;
     }
   }
 

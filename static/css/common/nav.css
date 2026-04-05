@@ -1,7 +1,7 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  padding: 20px 40px;
 }
 .navigation__item-container {
   display: flex;
@@ -12,7 +12,7 @@
 .navigation__item {
   color: #5EB0FF;
   text-decoration: none;
-  padding: 10px 10px;
+  padding: 10px 0;
 }
 .navigation__item:hover {
   text-decoration: underline;

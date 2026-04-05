@@ -1,12 +1,13 @@
 .orders {
   display: flex;
   flex-direction: column;
-  margin: 40px;
+  margin: 0 40px;
+  flex: 1;
 }
 .orders__title {
-  font-size: 52px;
-  font-weight: 400;
+  font-size: 32px;
   color: #393939;
+  font-weight: 400;
   margin-bottom: 20px;
   text-align: center;
 }

@@ -1,14 +1,15 @@
 @use '../colors';
 
 .contact-page {
-  margin: 20px;
+  margin: 0 40px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  flex: 1;
 
   &__title {
-    font-size: 52px;
+    font-size: 32px;
     color: colors.$labelBlack;
     font-weight: 400;
     text-align: center;

@@ -1,9 +1,10 @@
 @use '../colors';
 
-.delete-profile-form {
+.delete-profile {
   display: flex;
   flex-direction: column;
-  margin: 60px;
+  margin: 0 40px;
+  flex: 1;
 
   &__title {
     font-size: 32px;
@@ -13,7 +14,12 @@
     text-align: center;
   }
 
-  button {
-    align-self: center;
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      align-self: center;
+    }
   }
 }

@@ -3,7 +3,7 @@
 {% load form_components %}
 {% load button %}
 {% block content %}
-    <div class="profile-form-container">
+    <main class="profile-form-container">
         <form id="clear-profile-picture" method="post" action="{% url 'remove-profile-picture' request.user.pk %}">
             {% csrf_token %}
             <button class="clear-profile-picture__button">
@@ -26,10 +26,10 @@
                         {% custom_input label=field.label value=field.value name=field.html_name input_type=field.field.widget.input_type placeholder=field.field.widget.attrs.placeholder errors=field.errors is_required=False %}
                     {% endif %}
                 {% endfor %}
-                {% button button_type="submit" label="Edit profile" color="#393939" background_color="#BDDDFC" %}
+                {% button button_type="submit" label="Edit profile" color="#FFFFFF" background_color="#5EB0FF" %}
             </div>
         </form>
-    </div>
+    </main>
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'js/edit-profile-page.js' %}"></script>

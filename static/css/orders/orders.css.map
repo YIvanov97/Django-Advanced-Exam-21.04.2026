@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../scss/orders/orders.scss","../../scss/colors.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA,OCIS;EDHT;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OCVO;EDWP;EACA","file":"orders.css"}
+{"version":3,"sourceRoot":"","sources":["../../scss/orders/orders.scss","../../scss/colors.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA,OCIS;EDHT;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OCXO;EDYP;EACA","file":"orders.css"}

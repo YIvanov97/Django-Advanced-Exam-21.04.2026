@@ -17,6 +17,11 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
             InputFieldValidator(message="Username contains invalid characters.")
         ],
     )
+    favorite_products = models.ManyToManyField(
+        "products.Product",
+        related_name="favorite_products",
+        blank=True,
+    )
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

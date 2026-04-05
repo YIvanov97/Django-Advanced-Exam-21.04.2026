@@ -18,7 +18,21 @@
             </div>
         </div>
         <div class="product-details__data">
-            <span class="product-details__data-category">{{ product.category|capfirst }}</span>
+            <div class="product-details__data-header">
+            <span class="product-details__data-header-category">{{ product.category|capfirst }}</span>
+                {% if request.user.is_authenticated and not request.user.is_staff %}
+                    <form method="post" action="{% url 'toggle-favorite' pk=product.pk %}">
+                        {% csrf_token %}
+                        <button class="favorites-button">
+                            {% if product in request.user.favorite_products.all %}
+                                <i class="bi bi-heart-fill"></i>
+                            {% else %}
+                                <i class="bi bi-heart"></i>
+                            {% endif %}
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
             <h1 class="product-details__data-name">{{ product.name }}</h1>
             <p class="product-details__data-description">{{ product.description }}</p>
             <div class="separator"></div>
@@ -76,14 +90,14 @@
                 <form class="reviews__form" method="post" action="{% url 'product-details' product_slug=product.slug %}">
                     {% csrf_token %}
                     {% custom_input field_id=review_form.content.id_for_label name=review_form.content.html_name label=review_form.content.label placeholder=review_form.content.field.widget.attrs.placeholder %}
-                    {% button button_type="submit" label="Add review" color="#393939" background_color="#88BDF2" %}
+                    {% button button_type="submit" label="Add review" color="#FFFFFF" background_color="#5EB0FF" %}
                 </form>
             {% endif %}
         {% else %}
             <div class="reviews__login">
                 <span class="reviews__login-message">You must be logged in to leave a review.</span>
                 {% url 'login' as login_page_url %}
-                {% button href=login_page_url label="Login" color="#393939" background_color="#88BDF2" %}
+                {% button href=login_page_url label="Login" color="#FFFFFF" background_color="#5EB0FF" %}
             </div>
         {% endif %}
     </section>

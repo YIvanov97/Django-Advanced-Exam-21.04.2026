@@ -57,14 +57,35 @@
     flex-direction: column;
     gap: 20px;
 
-    &-category {
-      font-size: 16px;
-      color: colors.$lightBlue;
-      background-color: colors.$darkBlue;
-      font-weight: 600;
-      padding: 6px 10px;
-      width: max-content;
-      border-radius: 20px;
+    &-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &-category {
+        font-size: 16px;
+        color: colors.$lightBlue;
+        background-color: colors.$darkBlue;
+        font-weight: 600;
+        padding: 6px 10px;
+        width: max-content;
+        border-radius: 20px;
+        margin-right: 20px;
+      }
+
+      .favorites-button {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+
+        i {
+          font-size: 24px;
+          line-height: 1;
+          color: colors.$mainRed;
+          cursor: pointer;
+        }
+      }
     }
 
     &-name {
@@ -86,6 +107,10 @@
       flex-direction: row;
       gap: 20px;
       align-items: center;
+
+      a {
+        min-width: max-content;
+      }
     }
 
     &-price {
@@ -93,7 +118,6 @@
       color: colors.$mainBlue;
       font-weight: 700;
     }
-
   }
 
   &__delivery-data {
@@ -184,6 +208,7 @@
       font-weight: 700;
       color: colors.$labelGray;
       margin: 20px;
+      align-self: center;
     }
   }
 

@@ -1,0 +1,28 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
+  flex: 1;
+}
+.favorites__title {
+  font-size: 32px;
+  color: #393939;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.favorites__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.favorites__list-empty-message {
+  font-size: 24px;
+  font-weight: 700;
+  color: #393939;
+  text-align: center;
+  flex: 1;
+}
+
+/*# sourceMappingURL=favorites-page.css.map */

@@ -1,11 +1,15 @@
 .order-details {
+  margin: 0 40px;
+  flex: 1;
+}
+
+.order-container {
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
   border-radius: 10px;
-  margin: 0 40px;
 }
-.order-details__header {
+.order-container__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,25 +17,25 @@
   padding: 20px;
   border-bottom: 2px solid #E6F3FF;
 }
-.order-details__header-title {
+.order-container__header-title {
   font-size: 32px;
   font-weight: 400;
   color: #393939;
   margin: 0;
 }
-.order-details__header-date-label {
+.order-container__header-date-label {
   font-size: 16px;
   font-weight: 400;
   color: #707070;
 }
-.order-details__header-date-value {
+.order-container__header-date-value {
   color: #393939;
 }
-.order-details__status {
+.order-container__status {
   padding: 20px;
   border-bottom: 2px solid #E6F3FF;
 }
-.order-details__status .order-status {
+.order-container__status .order-status {
   font-size: 16px;
   font-weight: 400;
   color: #393939;
@@ -39,95 +43,95 @@
   height: max-content;
   border-radius: 10px;
 }
-.order-details__status .order-status--pending {
+.order-container__status .order-status--pending {
   background-color: #BDDDFC;
 }
-.order-details__status .order-status--processing {
+.order-container__status .order-status--processing {
   background-color: #FCE7BD;
 }
-.order-details__status .order-status--delivered {
+.order-container__status .order-status--delivered {
   background-color: #BDF5DC;
 }
-.order-details__status form {
+.order-container__status form {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 }
-.order-details__status form .select {
+.order-container__status form .select {
   flex: 1;
 }
-.order-details__status form button {
+.order-container__status form button {
   margin-top: 7px;
 }
-.order-details__products {
+.order-container__products {
   display: flex;
   flex-direction: column;
 }
-.order-details__products-product {
+.order-container__products-product {
   display: flex;
   flex-direction: row;
   padding: 20px;
   border-bottom: 1px solid #E6F3FF;
 }
-.order-details__products-product:last-of-type {
+.order-container__products-product:last-of-type {
   border-bottom: 0;
 }
-.order-details__products-product-image {
+.order-container__products-product-image {
   width: 50px;
   height: 50px;
   margin-right: 20px;
 }
-.order-details__products-product-image img {
+.order-container__products-product-image img {
   width: 100%;
   height: 100%;
 }
-.order-details__products-product-data {
+.order-container__products-product-data {
   display: flex;
   flex-direction: column;
   margin-right: auto;
 }
-.order-details__products-product-name {
+.order-container__products-product-name {
   font-size: 16px;
   font-weight: 700;
   color: #5EB0FF;
 }
-.order-details__products-product-quantity {
+.order-container__products-product-quantity {
   font-size: 14px;
   font-weight: 400;
   color: #707070;
 }
-.order-details__products-product-price {
+.order-container__products-product-price {
   font-size: 16px;
   font-weight: 400;
   color: #393939;
 }
-.order-details__user-data {
+.order-container__user-data {
   padding: 20px;
   border-top: 2px solid #E6F3FF;
   display: flex;
   flex-direction: column;
 }
-.order-details__user-data-title {
+.order-container__user-data-title {
   font-size: 28px;
   font-weight: 400;
   color: #393939;
   margin-bottom: 20px;
 }
-.order-details__user-data-list {
+.order-container__user-data-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.order-details__user-data-list .user-data-row {
+.order-container__user-data-list .user-data-row {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.order-details__user-data-list .user-data-row .user-data-row-label {
+.order-container__user-data-list .user-data-row .user-data-row-label {
   color: #707070;
 }
-.order-details__total {
+.order-container__total {
   display: flex;
   padding: 20px;
   border-top: 2px solid #E6F3FF;
@@ -136,12 +140,12 @@
   align-items: center;
   gap: 10px;
 }
-.order-details__total-label {
+.order-container__total-label {
   font-size: 16px;
   font-weight: 400;
   color: #707070;
 }
-.order-details__total-value {
+.order-container__total-value {
   font-size: 16px;
   font-weight: 700;
   color: #393939;

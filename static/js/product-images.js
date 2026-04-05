@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainImage = document.getElementById('main-image');
     const thumbnails = document.querySelectorAll(".product-thumbnail");
     const indicator = document.getElementById("thumbnail-indicator");
-    const thumbnailsGap = 20 * 2
+    const bodyPadding = 40
 
     function moveIndicator(target) {
         indicator.style.width = `${target.offsetWidth}px`;
         indicator.style.height = `${target.offsetHeight}px`;
-        indicator.style.transform = `translate(${target.offsetLeft - thumbnailsGap}px)`;
+        indicator.style.transform = `translate(${target.offsetLeft - bodyPadding}px)`;
     }
 
     thumbnails.forEach(el => {

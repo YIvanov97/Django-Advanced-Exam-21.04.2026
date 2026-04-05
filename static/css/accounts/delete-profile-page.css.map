@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../scss/accounts/delete-profile-page.scss","../../scss/colors.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA,OCKS;EDJT;EACA;EACA;;AAGF;EACE","file":"delete-profile-page.css"}
+{"version":3,"sourceRoot":"","sources":["../../scss/accounts/delete-profile-page.scss","../../scss/colors.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA,OCIS;EDHT;EACA;EACA;;AAGF;EACE;EACA;;AAEA;EACE","file":"delete-profile-page.css"}

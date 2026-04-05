@@ -17,7 +17,7 @@
         {% url 'remove-from-cart' product_slug=slug as remove_from_cart_url %}
         <form method="post" action="{{ remove_from_cart_url }}">
             {% csrf_token %}
-            {% button button_type="submit" icon="bi bi-trash" color="#FFFFFF" background_color="#DD3B44" %}
+            {% button button_type="submit" icon="bi bi-trash" is_small=True color="#FFFFFF" background_color="#DD3B44" %}
         </form>
     {% endif %}
 </div>

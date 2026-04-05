@@ -138,3 +138,21 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
         product_slug = review.to_product.slug
         review.delete()
         return redirect("product-details", product_slug=product_slug)
+
+class FavoriteProductsView(LoginRequiredMixin, ListView):
+    template_name = "products/pages/favorites-page.html"
+    context_object_name = "favorite_products"
+
+    def get_queryset(self):
+        return self.request.user.favorite_products.all()
+
+class ToggleFavoriteView(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, pk=kwargs["pk"])
+
+        if request.user.favorite_products.filter(pk=product.pk).exists():
+            request.user.favorite_products.remove(product)
+        else:
+            request.user.favorite_products.add(product)
+
+        return redirect("product-details", product_slug=product.slug)

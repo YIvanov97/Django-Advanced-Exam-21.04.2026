@@ -1,6 +1,7 @@
 .profile-form-container {
-  margin: 60px;
+  margin: 0 40px;
   position: relative;
+  flex: 1;
 }
 .profile-form-container .clear-profile-picture__button {
   height: 24px;

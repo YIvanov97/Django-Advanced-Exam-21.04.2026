@@ -3,7 +3,7 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  padding: 20px 40px;
 
   &__item-container {
     display: flex;
@@ -15,7 +15,7 @@
   &__item {
     color: colors.$mainBlue;
     text-decoration: none;
-    padding: 10px 10px;
+    padding: 10px 0;
 
     &:hover {
       text-decoration: underline;

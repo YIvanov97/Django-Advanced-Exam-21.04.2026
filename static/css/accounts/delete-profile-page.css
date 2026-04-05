@@ -1,16 +1,21 @@
-.delete-profile-form {
+.delete-profile {
   display: flex;
   flex-direction: column;
-  margin: 60px;
+  margin: 0 40px;
+  flex: 1;
 }
-.delete-profile-form__title {
+.delete-profile__title {
   font-size: 32px;
   color: #393939;
   font-weight: 400;
   margin-bottom: 20px;
   text-align: center;
 }
-.delete-profile-form button {
+.delete-profile__form {
+  display: flex;
+  flex-direction: column;
+}
+.delete-profile__form button {
   align-self: center;
 }
 

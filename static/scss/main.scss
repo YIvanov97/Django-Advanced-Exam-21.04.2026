@@ -5,6 +5,7 @@
 @use "common/home-page";
 @use "common/about-page";
 @use "common/contact-page";
+@use "common/footer";
 
 // Accounts
 @use "accounts/authentication";
@@ -16,6 +17,7 @@
 @use "products/catalog";
 @use "products/product-form-page";
 @use "products/product-details-page";
+@use "products/favorites-page";
 
 // Cart
 @use "cart/cart-page";
@@ -47,6 +49,9 @@ body {
   padding: 0;
   font-family: 'Inter', sans-serif;
   background-color: colors.$lightestBlue;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 *, *::before, *::after {

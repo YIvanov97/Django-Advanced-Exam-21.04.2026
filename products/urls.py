@@ -11,4 +11,6 @@ urlpatterns = [
     ])),
     path('review/<int:pk>/delete/', views.ReviewDeleteView.as_view(), name='review-delete'),
     path('review/<int:pk>/edit/', views.ReviewEditView.as_view(), name='review-edit'),
+    path("favorites/", views.FavoriteProductsView.as_view(), name="favorites"),
+    path("favorites/<int:pk>/toggle/", views.ToggleFavoriteView.as_view(), name="toggle-favorite"),
 ]

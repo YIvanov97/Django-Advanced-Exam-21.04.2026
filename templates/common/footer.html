@@ -1,0 +1,45 @@
+{% load static %}
+
+<footer class="footer">
+    <div class="footer__content">
+        <div class="footer__section">
+            <h3 class="footer__title">Tech Store</h3>
+            <p class="footer__text">
+                Your place for modern tech products, reliable shopping, and a clean online experience.
+            </p>
+        </div>
+
+        <div class="footer__section">
+            <h3 class="footer__title">Navigation</h3>
+            <ul class="footer__list">
+                <li><a href="{% url 'home-page' %}">Home</a></li>
+                <li><a href="{% url 'catalog' %}">Catalog</a></li>
+                <li><a href="{% url 'about-page' %}">About</a></li>
+                <li><a href="{% url 'contact-page' %}">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__section">
+            <h3 class="footer__title">Contact</h3>
+            <ul class="footer__list">
+                <li>
+                    <a href="mailto:support@techstore.com">support@techstore.com</a>
+                </li>
+                <li>
+                    <a href="tel:+35970000000">+359 700 00 000</a>
+                </li>
+                <li>
+                    <a href="https://www.google.com/maps?q=Sofia" target="_blank" rel="noopener noreferrer">
+                        Sofia, Bulgaria
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <p class="footer__copyright">
+            © {% now "Y" %} Tech Store. All rights reserved.
+        </p>
+    </div>
+</footer>

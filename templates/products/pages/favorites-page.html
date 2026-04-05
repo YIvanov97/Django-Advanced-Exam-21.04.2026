@@ -1,0 +1,16 @@
+{% extends 'common/base.html' %}
+{% load product_card %}
+
+{% block content %}
+    <main class="favorites">
+        <h1 class="favorites__title">Favorites</h1>
+        <div class="favorites__list">
+            {% for product in favorite_products %}
+                {% url 'product-details' product_slug=product.slug as product_url %}
+                {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
+            {% empty %}
+                <span class="favorites__list-empty-message">You haven’t added any favorites yet</span>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
