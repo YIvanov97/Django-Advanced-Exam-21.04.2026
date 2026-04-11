@@ -37,10 +37,11 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
+        creating = self.pk is None
         super().save(*args, **kwargs)
-        if not self.slug:
+        if creating and not self.slug:
             self.slug = slugify(f"{self.name}-{self.pk}")
-            super().save(*args, **kwargs)
+            super().save(update_fields=['slug'])
 
 class ProductImage(models.Model):
     product = models.ForeignKey(
