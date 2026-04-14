@@ -7,4 +7,3 @@ class CategoryChoices(models.TextChoices):
     MOUSE = 'mouse', 'Mouse'
     HEADPHONES = 'headphones', 'Headphones'
     SPEAKERS = 'speakers', 'Speaker'
-    OTHER = 'other', 'Other'
