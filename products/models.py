@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
@@ -49,7 +50,10 @@ class ProductImage(models.Model):
         on_delete=models.CASCADE,
         related_name="images",
     )
-    image = models.ImageField(upload_to="products/")
+    image = CloudinaryField(
+        "image",
+        folder="products",
+    )
 
 class Laptop(models.Model):
     product = models.OneToOneField(

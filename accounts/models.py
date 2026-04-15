@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinLengthValidator
@@ -52,8 +53,9 @@ class Profile(models.Model):
         blank=True,
         null=True,
     )
-    profile_picture = models.ImageField(
-        upload_to="profiles/",
+    profile_picture = CloudinaryField(
+        "profile_picture",
+        folder="profiles",
         blank=True,
         null=True,
     )
