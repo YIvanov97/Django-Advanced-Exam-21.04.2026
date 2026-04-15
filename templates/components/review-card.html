@@ -34,7 +34,7 @@
         {% with review_id=review.pk|stringformat:"s" %}
         {% custom_input input_type="text" field_id="review-"|add:review_id name="content" label="Edit review" value=review.content placeholder="Enter your review" %}
         {% endwith %}
-        {% button button_type="submit" label="Edit" color="#393939" background_color="#88BDF2" %}
+        {% button button_type="submit" label="Edit" color="#FFFFFF" background_color="#5EB0FF" %}
         <button type="button" class="review-card__form-cancel cancel-edit-review-button" data-review-id="{{ review.pk }}">Cancel</button>
     </form>
 </div>
