@@ -45,6 +45,14 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
+EMAIL_API_KEY = config("EMAIL_API_KEY")
+EMAIL_API_SECRET = config("EMAIL_API_SECRET")
+COMPANY_EMAIL = config("COMPANY_EMAIL")
+
 # Application definition
 
 PROJECT_APPS = [
