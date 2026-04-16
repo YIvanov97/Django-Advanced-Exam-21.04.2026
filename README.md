@@ -8,7 +8,7 @@
 
 A full-stack e-commerce web application built with **Django**, **PostgreSQL**, **Azure App Service**, and **Cloudinary**.
 
-🚀 **Live Demo:** https://your-app-url.azurewebsites.net/
+🚀 **Live Demo:** https://djangoshopproject-gpdadncxbdc9cgby.switzerlandnorth-01.azurewebsites.net/
 
 ---
 
