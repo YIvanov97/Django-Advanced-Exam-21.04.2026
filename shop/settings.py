@@ -46,6 +46,7 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_EMAIL = "shop@shop.com"
 EMAIL_HOST = config("EMAIL_HOST")
 EMAIL_PORT = config("EMAIL_PORT", cast=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
@@ -172,18 +173,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-DEFAULT_EMAIL = "shop@shop.com"
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
-EMAIL_USE_TLS = False
-
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', '')
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', '')
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
