@@ -4,7 +4,7 @@
 ![Django](https://img.shields.io/badge/Django-5.x-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
 ![Azure](https://img.shields.io/badge/Azure-Deployed-blue)
-![Tests](https://img.shields.io/badge/Tests-29%2B-success)
+![Tests](https://img.shields.io/badge/Tests-29-success)
 
 A full-stack e-commerce web application built with **Django**, **PostgreSQL**, **Azure App Service**, and **Cloudinary**.
 
@@ -16,7 +16,7 @@ A full-stack e-commerce web application built with **Django**, **PostgreSQL**, *
 
 Django Shop is an online marketplace where users can browse products, register accounts, add items to cart, place orders, leave reviews, and manage their profiles.
 
-The project was created for educational, portfolio, and exam purposes.
+The project was created for educational and exam purposes.
 
 ---
 
@@ -26,6 +26,7 @@ The project was created for educational, portfolio, and exam purposes.
 - Home page
 - Product catalog
 - Product details page
+- Add products to cart
 - About page
 - Contact page
 - User registration
@@ -42,11 +43,8 @@ The project was created for educational, portfolio, and exam purposes.
 
 ## 👨‍💼 Admin Area
 - Django admin dashboard
-- Manage users
 - Manage products
-- Manage orders
 - Update order statuses
-- Permission groups
 
 ## ⚙️ Production Features
 - PostgreSQL database
@@ -81,3 +79,26 @@ The project was created for educational, portfolio, and exam purposes.
 - OrderItem
 
 ---
+
+# 🚀 Installation
+
+## 1️⃣ Clone Repository
+
+git clone https://github.com/yourusername/yourrepo.git
+cd Shop
+
+## 2️⃣ Install Requirements
+
+pip install -r requirements.txt
+
+## 3️⃣ Apply Migrations
+
+python manage.py migrate
+
+## 4️⃣ Create Superuser
+
+python manage.py createsuperuser
+
+## 5️⃣ Run Server
+
+python manage.py runserver
