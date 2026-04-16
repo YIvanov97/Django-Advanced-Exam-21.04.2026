@@ -50,8 +50,8 @@ DEFAULT_EMAIL = "shop@shop.com"
 EMAIL_HOST = config("EMAIL_HOST")
 EMAIL_PORT = config("EMAIL_PORT", cast=int)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
-EMAIL_API_KEY = config("EMAIL_API_KEY")
-EMAIL_API_SECRET = config("EMAIL_API_SECRET")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 COMPANY_EMAIL = config("COMPANY_EMAIL")
 
 # Application definition
