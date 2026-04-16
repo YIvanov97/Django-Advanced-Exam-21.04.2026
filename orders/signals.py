@@ -20,6 +20,6 @@ def order_created_handler(sender, instance, created, **kwargs):
             _send_order_confirmation_email(
                 subject="Order confirmation",
                 message=f"Hi {instance.user.username}, your order #{instance.id} has been placed successfully.",
-                from_email=settings.COMPANY_EMAIL_EMAIL,
+                from_email=settings.COMPANY_EMAIL,
                 recipient_list=[instance.user.email],
             )
