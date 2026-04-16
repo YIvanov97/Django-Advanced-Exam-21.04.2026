@@ -62,8 +62,8 @@ The project was created for educational and exam purposes.
 | Backend | Frontend | Database | Deployment | Services |
 |--------|----------|----------|------------|----------|
 | Python | HTML5 | PostgreSQL | Azure App Service | Cloudinary |
-| Django | CSS3 | SQLite (dev) | Azure PostgreSQL | Mailjet |
-| DRF | Bootstrap | | | |
+| Django | CSS3 / SCSS | | Azure PostgreSQL | Mailjet |
+| DRF | Bootstrap / JavaScript | | | |
 
 ---
 
@@ -84,21 +84,27 @@ The project was created for educational and exam purposes.
 
 ## 1️⃣ Clone Repository
 
-git clone https://github.com/yourusername/yourrepo.git
+```bash
+git clone https://github.com/YIvanov97/Django-Advanced-Exam-21.04.2026.git
 cd Shop
+```
 
 ## 2️⃣ Install Requirements
-
+```bash
 pip install -r requirements.txt
+```
 
 ## 3️⃣ Apply Migrations
-
+```bash
 python manage.py migrate
+```
 
 ## 4️⃣ Create Superuser
-
+```bash
 python manage.py createsuperuser
+```
 
 ## 5️⃣ Run Server
-
+```bash
 python manage.py runserver
+```
