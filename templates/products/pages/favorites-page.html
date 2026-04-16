@@ -9,7 +9,7 @@
                 {% url 'product-details' product_slug=product.slug as product_url %}
                 {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
             {% empty %}
-                <span class="favorites__list-empty-message">You haven’t added any favorites yet</span>
+                <span class="favorites__list-empty-message">You haven’t added any favorite products yet</span>
             {% endfor %}
         </div>
     </main>

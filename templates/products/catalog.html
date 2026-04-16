@@ -26,7 +26,7 @@
                 {% url 'product-details' product_slug=product.slug as product_url %}
                 {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
             {% empty %}
-                <h1>No products</h1>
+                <h1 class="catalog__list-empty-message">No products</h1>
             {% endfor %}
         </div>
     </div>

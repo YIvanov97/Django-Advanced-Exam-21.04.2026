@@ -16,9 +16,10 @@
     color: colors.$mainBlue;
     text-decoration: none;
     padding: 10px 0;
+    transition: transform 0.3s ease;
 
     &:hover {
-      text-decoration: underline;
+      transform: scale(1.1);
     }
   }
 

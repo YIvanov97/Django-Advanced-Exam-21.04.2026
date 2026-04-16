@@ -10,7 +10,7 @@
             <h1 class="heading__title">Redefining Your Tech Experience</h1>
             <div class="heading__data-container">
                 <p class="heading__data-label">
-                    At Shop, we're redefining your tech experience by offering the latest and most innovative products.
+                    We're redefining your tech experience by offering the latest and most innovative products.
                 </p>
                 <div class="heading__buttons-container">
                     {% url 'catalog' as catalog_url %}
@@ -20,17 +20,17 @@
                 </div>
             </div>
         </section>
-        <section class="featured-products">
-            <h2 class="featured-products__title">Featured Products</h2>
-            <div class="featured-products__products-list">
-                {% for product in featured_products %}
-                    {% url 'product-details' product_slug=product.slug as product_url %}
-                    {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
-                {% empty %}
-                    <span>No products</span>
-                {% endfor %}
-            </div>
-        </section>
+        {% if featured_products %}
+            <section class="featured-products">
+                <h2 class="featured-products__title">Featured Products</h2>
+                <div class="featured-products__products-list">
+                    {% for product in featured_products %}
+                        {% url 'product-details' product_slug=product.slug as product_url %}
+                        {% product_card href=product_url product_name=product.name image=product.images.first.image.url price=product.price %}
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
         <section class="shop-by-category">
             <div class="shop-by-category__header-container">
                 <h2 class="shop-by-category__title">Shop by Category</h2>

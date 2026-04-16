@@ -13,9 +13,10 @@
   color: #5EB0FF;
   text-decoration: none;
   padding: 10px 0;
+  transition: transform 0.3s ease;
 }
 .navigation__item:hover {
-  text-decoration: underline;
+  transform: scale(1.1);
 }
 .navigation__cart-container, .navigation__orders-container {
   padding: 7px 8px;

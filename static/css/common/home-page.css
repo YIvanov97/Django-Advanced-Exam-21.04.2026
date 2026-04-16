@@ -44,6 +44,7 @@
 
 .featured-products {
   padding: 20px 40px;
+  margin-top: 40px;
 }
 .featured-products__title {
   font-size: 52px;
@@ -55,14 +56,18 @@
   display: flex;
   flex-direction: row;
   gap: 40px;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
+}
+.featured-products__products-list:has(> *:nth-child(3):last-child) {
+  justify-content: space-between;
 }
 
 .shop-by-category {
   background-color: #BDDDFC;
   width: 100%;
   padding: 20px 40px;
+  margin-top: 40px;
 }
 .shop-by-category__header-container {
   display: flex;

@@ -35,5 +35,9 @@
   gap: 40px;
   margin-top: 40px;
 }
+.catalog__list-empty-message {
+  width: 100%;
+  text-align: center;
+}
 
 /*# sourceMappingURL=catalog.css.map */

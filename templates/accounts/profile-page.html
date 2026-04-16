@@ -28,7 +28,14 @@
             </div>
             <div class="profile__container-data-row">
                 <p class="profile__container-data-row-label">Name: </p>
-                <p class="profile__container-data-row-value">{{ object.user.profile.first_name }} {{ object.user.profile.last_name }}</p>
+                <p class="profile__container-data-row-value">
+                    {% if object.user.profile.first_name %}
+                        {{ object.user.profile.first_name }}
+                    {% endif %}
+                    {% if object.user.profile.last_name %}
+                        {{ object.user.profile.last_name }}
+                    {% endif %}
+                </p>
             </div>
             <div class="profile__container-data-row">
                 <p class="profile__container-data-row-label">Date of birth: </p>
