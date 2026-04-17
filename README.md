@@ -108,3 +108,12 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
+## Demo Accounts
+
+### Admin Account
+- Email: admin@admin.com
+- Password: admin
+
+### Test User Account
+- Email: test@testov.com
+- Password: 12test34
