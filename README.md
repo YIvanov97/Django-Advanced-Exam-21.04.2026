@@ -10,6 +10,16 @@ A full-stack e-commerce web application built with **Django**, **PostgreSQL**, *
 
 🚀 **Live Demo:** https://djangoshopproject-gpdadncxbdc9cgby.switzerlandnorth-01.azurewebsites.net/
 
+## Demo Accounts
+
+### Admin Account
+- Email: admin@admin.com
+- Password: admin
+
+### Test User Account
+- Email: test@testov.com
+- Password: 12test34
+
 ---
 
 # 📌 Project Overview
@@ -108,12 +118,3 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
-## Demo Accounts
-
-### Admin Account
-- Email: admin@admin.com
-- Password: admin
-
-### Test User Account
-- Email: test@testov.com
-- Password: 12test34
